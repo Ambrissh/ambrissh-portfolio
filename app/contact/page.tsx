@@ -35,14 +35,16 @@ export default function ContactPage() {
           </p>
         </motion.div>
 
-        <motion.form
-          action="https://formspree.io/f/mnjrnewv"
-          method="POST"
+        <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="mt-20 space-y-10"
         >
+          <form
+            action="https://formspree.io/f/mnjrnewv"
+            method="POST"
+            className="mt-20 space-y-10"
+          >
           {/* Name */}
           <div className="space-y-3">
             <label className="text-sm uppercase tracking-[0.2em] text-white/40">
@@ -99,7 +101,10 @@ export default function ContactPage() {
               </span>
             </button>
           </div>
-        </motion.form>
+            {/* Temporary visible production indicator */}
+            <p className="mt-8 text-center text-xs text-white/20">Production Form Active</p>
+          </form>
+        </motion.div>
       </section>
     </main>
   );
