@@ -43,7 +43,7 @@ export function PodcastBioSection() {
         className="relative mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[minmax(280px,0.72fr)_minmax(0,1fr)] md:gap-16 lg:gap-24"
         initial={prefersReducedMotion ? undefined : "hidden"}
         whileInView={prefersReducedMotion ? undefined : "visible"}
-        viewport={{ once: true, amount: 0.28, margin: "-50px" }}
+        viewport={{ once: true, amount: 0.05, margin: "-50px" }}
         variants={
           prefersReducedMotion
             ? undefined
@@ -56,9 +56,9 @@ export function PodcastBioSection() {
         >
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08),transparent_64%)] blur-2xl"
+            className="absolute left-1/2 top-1/2 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08),transparent_64%)]"
           />
-          <div className="relative mx-auto aspect-square w-full max-w-[360px] overflow-hidden rounded-[8px] border border-white/[0.08] bg-[#0d0d0d] p-6 shadow-[0_28px_90px_rgba(0,0,0,0.4)] md:mx-0">
+          <div className="relative mx-auto aspect-square w-full max-w-[360px] overflow-hidden rounded-[8px] border border-white/[0.08] bg-[#0d0d0d] p-6 md:mx-0">
             <Image
               src={siteContent.podcast.logo}
               alt={`${siteContent.podcast.name} logo`}

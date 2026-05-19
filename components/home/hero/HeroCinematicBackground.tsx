@@ -21,17 +21,6 @@ export function HeroCinematicBackground() {
           backgroundImage: noiseBg,
           backgroundSize: "180px 180px",
         }}
-        animate={
-          prefersReducedMotion
-            ? undefined
-            : { x: ["-2%", "2%"], y: ["-1%", "1%"] }
-        }
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          repeatType: "mirror",
-          ease: "linear",
-        }}
       />
 
       <motion.div

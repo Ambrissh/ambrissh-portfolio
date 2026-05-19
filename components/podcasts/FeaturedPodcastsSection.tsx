@@ -62,7 +62,7 @@ export function FeaturedPodcastsSection() {
               ? undefined
               : { opacity: 1, y: 0 }
           }
-          viewport={{ once: true, amount: 0.45 }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease }}
         >
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
@@ -78,12 +78,12 @@ export function FeaturedPodcastsSection() {
           variants={prefersReducedMotion ? undefined : grid}
           initial={prefersReducedMotion ? undefined : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.16, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.05, margin: "-60px" }}
         >
           {siteContent.podcast.featured.map((episode, index) => (
             <motion.article
               key={episode.videoId}
-              className="group grid overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] shadow-[0_28px_90px_rgba(0,0,0,0.38)] transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#151515] lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]"
+              className="group grid overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#151515] lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]"
               variants={prefersReducedMotion ? undefined : card}
               whileHover={
                 prefersReducedMotion

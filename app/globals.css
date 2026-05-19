@@ -66,11 +66,9 @@ body {
 }
 
 /* ✅ GPU-accelerate all framer-motion animated elements in Safari */
-[style*="transform"],
-[style*="opacity"] {
+[style*="transform"], [style*="opacity"] {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
   will-change: transform;
 }
 

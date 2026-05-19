@@ -12,7 +12,7 @@ const projectGrid = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
 };
@@ -50,7 +50,7 @@ export function FeaturedProjectsSection() {
           className="max-w-3xl"
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
           whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.45 }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease }}
         >
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
@@ -66,12 +66,12 @@ export function FeaturedProjectsSection() {
           variants={prefersReducedMotion ? undefined : projectGrid}
           initial={prefersReducedMotion ? undefined : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.18, margin: "-40px" }}
+          viewport={{ once: true, amount: 0.05, margin: "-40px" }}
         >
           {siteContent.projects.map((project, index) => (
             <motion.article
               key={project.title}
-              className="group relative min-h-[300px] overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] p-6 shadow-[0_28px_90px_rgba(0,0,0,0.38)] transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#111111] sm:p-7"
+              className="group relative min-h-[300px] overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] p-6 transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#111111] sm:p-7"
               variants={prefersReducedMotion ? undefined : projectCard}
               whileHover={
                 prefersReducedMotion

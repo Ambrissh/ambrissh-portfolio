@@ -56,7 +56,7 @@ export function OtherPodcastsSection() {
               ? undefined
               : { opacity: 1, y: 0 }
           }
-          viewport={{ once: true, amount: 0.45 }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease }}
         >
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
@@ -72,12 +72,12 @@ export function OtherPodcastsSection() {
           variants={prefersReducedMotion ? undefined : grid}
           initial={prefersReducedMotion ? undefined : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.24, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.05, margin: "-60px" }}
         >
           {siteContent.podcast.other.map((episode, index) => (
             <motion.article
               key={episode.videoId}
-              className="group overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#151515]"
+              className="group overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] p-3 transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#151515]"
               variants={prefersReducedMotion ? undefined : item}
               whileHover={
                 prefersReducedMotion

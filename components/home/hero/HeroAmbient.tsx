@@ -28,12 +28,12 @@ export function HeroAmbient() {
 
       {/* Key light — slow bloom behind quote */}
       <motion.div
-        className="absolute left-1/2 top-[42%] h-[min(70vw,520px)] w-[min(90vw,720px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_38%,transparent_68%)] blur-3xl"
-        initial={{ opacity: 0, scale: 0.72 }}
+        className="absolute left-1/2 top-[42%] h-[min(70vw,520px)] w-[min(90vw,720px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_38%,transparent_68%)]"
+        initial={{ opacity: 0 }}
         animate={
           prefersReducedMotion
-            ? { opacity: 0.35, scale: 1 }
-            : { opacity: [0, 0.22, 0.38, 0.28], scale: [0.72, 0.95, 1.02, 0.98] }
+            ? { opacity: 0.35 }
+            : { opacity: [0, 0.22, 0.38, 0.28] }
         }
         transition={
           prefersReducedMotion

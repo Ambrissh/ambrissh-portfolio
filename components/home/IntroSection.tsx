@@ -11,23 +11,21 @@ import { siteContent } from "@/lib/content";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const textReveal = {
-  hidden: { opacity: 0, y: 38, filter: "blur(14px)" },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 1.25, ease },
+    transition: { duration: 0.7, ease },
   },
 };
 
 const imageReveal = {
-  hidden: { opacity: 0, y: 48, scale: 1.06, filter: "blur(18px)" },
+  hidden: { opacity: 0, y: 16, scale: 1.06 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: "blur(0px)",
-    transition: { duration: 1.35, ease },
+    transition: { duration: 0.7, ease },
   },
 };
 
@@ -44,7 +42,7 @@ export function IntroSection() {
     : {
         initial: "hidden" as const,
         whileInView: "visible" as const,
-        viewport: { once: true, amount: 0.28, margin: "-40px" },
+        viewport: { once: true, amount: 0.05, margin: "-40px" },
       };
 
   return (
@@ -69,7 +67,7 @@ export function IntroSection() {
             ? undefined
             : {
                 hidden: {},
-                visible: { transition: { staggerChildren: 0.14 } },
+                visible: { transition: { staggerChildren: 0.08 } },
               }
         }
         {...motionProps}
@@ -81,7 +79,7 @@ export function IntroSection() {
         >
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 h-[112%] w-[118%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.07),transparent_64%)] blur-2xl"
+            className="absolute left-1/2 top-1/2 h-[112%] w-[118%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.07),transparent_64%)]"
           />
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[340px] overflow-hidden rounded-[2px] md:mx-0 md:max-w-[420px]">
             <div className="absolute inset-[-8%]">

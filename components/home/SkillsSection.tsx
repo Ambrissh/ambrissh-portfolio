@@ -49,7 +49,7 @@ export function SkillsSection() {
           className="max-w-2xl"
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
           whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.45 }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.7, ease }}
         >
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
@@ -65,14 +65,14 @@ export function SkillsSection() {
           variants={prefersReducedMotion ? undefined : containerVariants}
           initial={prefersReducedMotion ? undefined : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.18, margin: "-40px" }}
+          viewport={{ once: true, amount: 0.05, margin: "-40px" }}
         >
           {siteContent.skills.map((skill, index) => (
             <motion.article
               key={skill.title}
               className={[
                 "group relative overflow-hidden rounded-[8px] border border-white/[0.09]",
-                "bg-[#0d0d0d] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.35)]",
+                "bg-[#0d0d0d] p-5",
                 "transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#111111]",
                 index < 2 ? "lg:col-span-3" : "lg:col-span-2",
               ].join(" ")}
