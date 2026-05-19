@@ -45,62 +45,62 @@ export default function ContactPage() {
             method="POST"
             className="mt-20 space-y-10"
           >
-          {/* Name */}
-          <div className="space-y-3">
-            <label className="text-sm uppercase tracking-[0.2em] text-white/40">
-              Name
-            </label>
-
-            <input
-              type="text"
-              name="name"
-              required
-              placeholder="Your name"
-              className="w-full rounded-3xl border border-white/10 bg-white/5 px-6 py-5 text-white outline-none backdrop-blur-md transition-all duration-300 placeholder:text-white/20 focus:border-white/30 focus:bg-white/10"
-            />
-          </div>
-
-          {/* Email */}
-          <div className="space-y-3">
-            <label className="text-sm uppercase tracking-[0.2em] text-white/40">
-              Email Address
-            </label>
-
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="you@example.com"
-              className="w-full rounded-3xl border border-white/10 bg-white/5 px-6 py-5 text-white outline-none backdrop-blur-md transition-all duration-300 placeholder:text-white/20 focus:border-white/30 focus:bg-white/10"
-            />
-          </div>
-
-          {questions.map((question, index) => (
-            <div key={index} className="space-y-3">
+            {/* Name */}
+            <div className="space-y-3">
               <label className="text-sm uppercase tracking-[0.2em] text-white/40">
-                {question}
+                Name
               </label>
 
-              <textarea
-                name={`question-${index}`}
+              <input
+                type="text"
+                name="name"
                 required
-                rows={5}
-                placeholder="Type your thoughts here..."
+                placeholder="Your name"
                 className="w-full rounded-3xl border border-white/10 bg-white/5 px-6 py-5 text-white outline-none backdrop-blur-md transition-all duration-300 placeholder:text-white/20 focus:border-white/30 focus:bg-white/10"
               />
             </div>
-          ))}
 
-          <div className="pt-6">
-            <button
-              type="submit"
-              className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90"
-            >
-              <span className="relative z-10">
-                SEND NOW TEST
-              </span>
-            </button>
-          </div>
+            {/* Email */}
+            <div className="space-y-3">
+              <label className="text-sm uppercase tracking-[0.2em] text-white/40">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                className="w-full rounded-3xl border border-white/10 bg-white/5 px-6 py-5 text-white outline-none backdrop-blur-md transition-all duration-300 placeholder:text-white/20 focus:border-white/30 focus:bg-white/10"
+              />
+            </div>
+
+            {questions.map((question, index) => (
+              <div key={index} className="space-y-3">
+                <label className="text-sm uppercase tracking-[0.2em] text-white/40">
+                  {question}
+                </label>
+
+                <textarea
+                  name={`question-${index}`}
+                  required
+                  rows={5}
+                  placeholder="Type your thoughts here..."
+                  className="w-full rounded-3xl border border-white/10 bg-white/5 px-6 py-5 text-white outline-none backdrop-blur-md transition-all duration-300 placeholder:text-white/20 focus:border-white/30 focus:bg-white/10"
+                />
+              </div>
+            ))}
+
+            <div className="pt-6">
+              <button
+                type="submit"
+                className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90"
+              >
+                <span className="relative z-10">
+                  Send Thoughts
+                </span>
+              </button>
+            </div>
             {/* Temporary visible production indicator */}
             <p className="mt-8 text-center text-xs text-white/20">Production Form Active</p>
           </form>
