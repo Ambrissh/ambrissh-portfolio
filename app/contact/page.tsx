@@ -25,22 +25,25 @@ export default function ContactPage() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_REAL_ID", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+
+      const result = await res.json();
 
       if (res.ok) {
         setStatus("success");
         setMessage("Your thoughts have been sent successfully!");
         (e.target as HTMLFormElement).reset();
       } else {
-        throw new Error("Failed to send message");
+        setStatus("error");
+        setMessage(result.error || "Something went wrong. Please try again.");
       }
     } catch (err: any) {
       setStatus("error");
-      setMessage(err.message || "An unexpected error occurred. Please try again.");
+      setMessage(err.message || "Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
