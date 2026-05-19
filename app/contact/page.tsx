@@ -25,9 +25,19 @@ export default function ContactPage() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const res = await fetch("/api/contact", {
+      const formspreeUrl = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`;
+
+      if (!process.env.NEXT_PUBLIC_FORMSPREE_ID) {
+        console.error("Missing NEXT_PUBLIC_FORMSPREE_ID environment variable.");
+        throw new Error("Form configuration error. Please try again later.");
+      }
+
+      const res = await fetch(formspreeUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
         body: JSON.stringify(data),
       });
 
@@ -75,6 +85,7 @@ export default function ContactPage() {
         </motion.div>
 
         <motion.form
+          action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`}
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
