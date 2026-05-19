@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 const questions = [
   "What problem are you obsessed with solving?",
@@ -10,38 +10,33 @@ const questions = [
   "Leave a thought, idea, or question you genuinely care about.",
 ];
 
+type Status = "idle" | "success" | "error";
+
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setIsSubmitting(true);
     setStatus("idle");
     setMessage("");
 
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
 
     try {
-      const formspreeUrl = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`;
-
-      if (!process.env.NEXT_PUBLIC_FORMSPREE_ID) {
-        console.error("Missing NEXT_PUBLIC_FORMSPREE_ID environment variable.");
-        throw new Error("Form configuration error. Please try again later.");
-      }
-
-      const res = await fetch(formspreeUrl, {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await res.json();
+      const res = await fetch(
+        "https://formspree.io/f/mnjrnewv",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
 
       if (res.ok) {
         setStatus("success");
@@ -49,11 +44,13 @@ export default function ContactPage() {
         (e.target as HTMLFormElement).reset();
       } else {
         setStatus("error");
-        setMessage(result.error || "Something went wrong. Please try again.");
+        setMessage("Failed to send message.");
       }
-    } catch (err: any) {
+    } catch (error) {
+      console.error(error);
+
       setStatus("error");
-      setMessage(err.message || "Something went wrong. Please try again.");
+      setMessage("Failed to send message.");
     } finally {
       setIsSubmitting(false);
     }
@@ -78,14 +75,13 @@ export default function ContactPage() {
             world.
           </p>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/40 sm:text-lg">
             These are just a few casual questions I genuinely enjoy asking
-            people — no pressure, no judgment, just curiosity 🙂 ...
+            people — no pressure, no judgment, just curiosity.
           </p>
         </motion.div>
 
         <motion.form
-          action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`}
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -94,7 +90,7 @@ export default function ContactPage() {
         >
           {/* Name */}
           <div className="space-y-3">
-            <label className="text-sm uppercase tracking-[0.2em] text-yellow/40">
+            <label className="text-sm uppercase tracking-[0.2em] text-white/40">
               Name
             </label>
 
@@ -109,7 +105,7 @@ export default function ContactPage() {
 
           {/* Email */}
           <div className="space-y-3">
-            <label className="text-sm uppercase tracking-[0.2em] text-yellow/40">
+            <label className="text-sm uppercase tracking-[0.2em] text-white/40">
               Email Address
             </label>
 
@@ -124,7 +120,7 @@ export default function ContactPage() {
 
           {questions.map((question, index) => (
             <div key={index} className="space-y-3">
-              <label className="text-sm uppercase tracking-[0.2em] text-yellow/40">
+              <label className="text-sm uppercase tracking-[0.2em] text-white/40">
                 {question}
               </label>
 
@@ -138,27 +134,29 @@ export default function ContactPage() {
             </div>
           ))}
 
-          <div className="pt-6 flex flex-col items-center sm:items-start gap-4">
+          <div className="pt-6">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90 disabled:opacity-50"
             >
               <span className="relative z-10">
                 {isSubmitting ? "Sending..." : "Send Thoughts"}
               </span>
             </button>
-
-            {status !== "idle" && (
-              <p
-                className={`text-sm ${
-                  status === "success" ? "text-green-400" : "text-red-400"
-                }`}
-              >
-                {message}
-              </p>
-            )}
           </div>
+
+          {status === "success" && (
+            <p className="text-sm text-green-400">
+              {message}
+            </p>
+          )}
+
+          {status === "error" && (
+            <p className="text-sm text-red-400">
+              {message}
+            </p>
+          )}
         </motion.form>
       </section>
     </main>
