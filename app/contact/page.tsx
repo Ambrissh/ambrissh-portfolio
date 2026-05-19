@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 const questions = [
   "What problem are you obsessed with solving?",
   "What are you currently building or exploring?",
@@ -91,7 +92,7 @@ export default function ContactPage() {
           <div className="pt-6">
             <button
               type="submit"
-              className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90 disabled:opacity-50"
+              className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90"
             >
               <span className="relative z-10">
                 Send Thoughts
