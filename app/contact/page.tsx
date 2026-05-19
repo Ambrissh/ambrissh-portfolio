@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, FormEvent } from "react";
 
 const questions = [
   "What problem are you obsessed with solving?",
@@ -10,6 +11,43 @@ const questions = [
 ];
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus("idle");
+    setMessage("");
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
+      setStatus("success");
+      setMessage("Your thoughts have been sent successfully!");
+      (e.target as HTMLFormElement).reset();
+    } catch (err: any) {
+      setStatus("error");
+      setMessage(err.message || "An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-black px-6 py-32 text-white">
       <section className="mx-auto max-w-4xl">
@@ -36,9 +74,7 @@ export default function ContactPage() {
         </motion.div>
 
         <motion.form
-          
-          action="https://formspree.io/f/xykvzkbk"
-          method="POST"
+          onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
@@ -90,13 +126,26 @@ export default function ContactPage() {
             </div>
           ))}
 
-          <div className="pt-6">
+          <div className="pt-6 flex flex-col items-center sm:items-start gap-4">
             <button
               type="submit"
-              className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90"
+              disabled={isSubmitting}
+              className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              <span className="relative z-10">Send Thoughts</span>
+              <span className="relative z-10">
+                {isSubmitting ? "Sending..." : "Send Thoughts"}
+              </span>
             </button>
+
+            {status !== "idle" && (
+              <p
+                className={`text-sm ${
+                  status === "success" ? "text-green-400" : "text-red-400"
+                }`}
+              >
+                {message}
+              </p>
+            )}
           </div>
         </motion.form>
       </section>
