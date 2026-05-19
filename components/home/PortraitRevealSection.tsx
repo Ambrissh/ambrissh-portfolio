@@ -37,7 +37,7 @@ export function PortraitRevealSection() {
       >
         <div className="relative aspect-[4/5] w-[min(80vw,400px)] overflow-hidden">
           <Image
-            src="/assets/ambrissh.png"
+            src="/assets/ambrisshtedx.png"
             alt={siteContent.name}
             fill
             className="object-cover object-center"
@@ -74,7 +74,7 @@ export function PortraitRevealSection() {
           >
             <motion.div className="absolute inset-[-8%]" style={{ y: portraitY }}>
               <Image
-                src="/assets/ambrissh.png"
+                src="/assets/ambrisshtedx.png"
                 alt={siteContent.name}
                 fill
                 className="object-cover object-[center_18%]"

@@ -86,7 +86,7 @@ export function IntroSection() {
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[340px] overflow-hidden rounded-[2px] md:mx-0 md:max-w-[420px]">
             <div className="absolute inset-[-8%]">
               <Image
-                src="/assets/ambrissh.png"
+                src="/assets/ambrisshtedx.png"
                 alt={siteContent.name}
                 fill
                 className="object-cover object-[center_18%]"

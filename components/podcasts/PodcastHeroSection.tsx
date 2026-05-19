@@ -50,14 +50,14 @@ export function PodcastHeroSection() {
         initial={
           prefersReducedMotion
             ? undefined
-            : { opacity: 0, y: 34, filter: "blur(18px)" }
+            : { opacity: 0, y: 16 }
         }
         animate={
           prefersReducedMotion
             ? undefined
-            : { opacity: 1, y: 0, filter: "blur(0px)" }
+            : { opacity: 1, y: 0 }
         }
-        transition={{ duration: 1.35, delay: 0.18, ease }}
+        transition={{ duration: 0.7, delay: 0.18, ease }}
       >
         <h1 className="font-sans text-[clamp(3.1rem,10vw,8.6rem)] font-semibold leading-[0.9] tracking-[-0.065em] text-white">
           {siteContent.podcast.name}

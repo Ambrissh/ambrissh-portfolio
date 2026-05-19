@@ -17,12 +17,11 @@ const grid = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 30, filter: "blur(12px)" },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 1, ease },
+    transition: { duration: 0.7, ease },
   },
 };
 
@@ -50,15 +49,15 @@ export function OtherPodcastsSection() {
           initial={
             prefersReducedMotion
               ? undefined
-              : { opacity: 0, y: 28, filter: "blur(10px)" }
+              : { opacity: 0, y: 16 }
           }
           whileInView={
             prefersReducedMotion
               ? undefined
-              : { opacity: 1, y: 0, filter: "blur(0px)" }
+              : { opacity: 1, y: 0 }
           }
           viewport={{ once: true, amount: 0.45 }}
-          transition={{ duration: 1, ease }}
+          transition={{ duration: 0.7, ease }}
         >
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
             More episodes
@@ -78,7 +77,7 @@ export function OtherPodcastsSection() {
           {siteContent.podcast.other.map((episode, index) => (
             <motion.article
               key={episode.videoId}
-              className="group overflow-hidden rounded-[8px] border border-white/[0.09] bg-white/[0.045] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-colors duration-500 hover:border-white/[0.18] hover:bg-white/[0.07]"
+              className="group overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] p-3 shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#151515]"
               variants={prefersReducedMotion ? undefined : item}
               whileHover={
                 prefersReducedMotion

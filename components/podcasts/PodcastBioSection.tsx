@@ -3,8 +3,6 @@
 import {
   motion,
   useReducedMotion,
-  useScroll,
-  useTransform,
 } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
@@ -13,26 +11,17 @@ import { siteContent } from "@/lib/content";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const reveal = {
-  hidden: { opacity: 0, y: 38, filter: "blur(14px)" },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 1.2, ease },
+    transition: { duration: 0.7, ease },
   },
 };
 
 export function PodcastBioSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const logoY = useTransform(scrollYProgress, [0, 1], [38, -36]);
-  const textY = useTransform(scrollYProgress, [0, 1], [20, -24]);
 
   return (
     <section
@@ -64,13 +53,12 @@ export function PodcastBioSection() {
         <motion.div
           className="relative"
           variants={prefersReducedMotion ? undefined : reveal}
-          style={prefersReducedMotion ? undefined : { y: logoY }}
         >
           <div
             aria-hidden
             className="absolute left-1/2 top-1/2 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08),transparent_64%)] blur-2xl"
           />
-          <div className="relative mx-auto aspect-square w-full max-w-[360px] overflow-hidden rounded-[8px] border border-white/[0.08] bg-white/[0.035] p-6 shadow-[0_28px_90px_rgba(0,0,0,0.4)] backdrop-blur-xl md:mx-0">
+          <div className="relative mx-auto aspect-square w-full max-w-[360px] overflow-hidden rounded-[8px] border border-white/[0.08] bg-[#0d0d0d] p-6 shadow-[0_28px_90px_rgba(0,0,0,0.4)] md:mx-0">
             <Image
               src={siteContent.podcast.logo}
               alt={`${siteContent.podcast.name} logo`}
@@ -88,7 +76,6 @@ export function PodcastBioSection() {
 
         <motion.div
           variants={prefersReducedMotion ? undefined : reveal}
-          style={prefersReducedMotion ? undefined : { y: textY }}
         >
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
             The conversation layer

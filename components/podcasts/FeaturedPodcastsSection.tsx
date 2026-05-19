@@ -3,8 +3,6 @@
 import {
   motion,
   useReducedMotion,
-  useScroll,
-  useTransform,
 } from "framer-motion";
 import { MoveUpRight, Play } from "lucide-react";
 import { useRef } from "react";
@@ -23,26 +21,17 @@ const grid = {
 };
 
 const card = {
-  hidden: { opacity: 0, y: 38, filter: "blur(14px)" },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 1.1, ease },
+    transition: { duration: 0.7, ease },
   },
 };
 
 export function FeaturedPodcastsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const headingY = useTransform(scrollYProgress, [0, 1], [26, -18]);
-  const cardsY = useTransform(scrollYProgress, [0, 1], [44, -32]);
 
   return (
     <section
@@ -63,19 +52,18 @@ export function FeaturedPodcastsSection() {
       <div className="relative mx-auto max-w-6xl">
         <motion.div
           className="max-w-3xl"
-          style={prefersReducedMotion ? undefined : { y: headingY }}
           initial={
             prefersReducedMotion
               ? undefined
-              : { opacity: 0, y: 28, filter: "blur(10px)" }
+              : { opacity: 0, y: 16 }
           }
           whileInView={
             prefersReducedMotion
               ? undefined
-              : { opacity: 1, y: 0, filter: "blur(0px)" }
+              : { opacity: 1, y: 0 }
           }
           viewport={{ once: true, amount: 0.45 }}
-          transition={{ duration: 1, ease }}
+          transition={{ duration: 0.7, ease }}
         >
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
             Featured conversations
@@ -87,7 +75,6 @@ export function FeaturedPodcastsSection() {
 
         <motion.div
           className="mt-14 grid gap-5 lg:mt-16"
-          style={prefersReducedMotion ? undefined : { y: cardsY }}
           variants={prefersReducedMotion ? undefined : grid}
           initial={prefersReducedMotion ? undefined : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "visible"}
@@ -96,7 +83,7 @@ export function FeaturedPodcastsSection() {
           {siteContent.podcast.featured.map((episode, index) => (
             <motion.article
               key={episode.videoId}
-              className="group grid overflow-hidden rounded-[8px] border border-white/[0.09] bg-white/[0.045] shadow-[0_28px_90px_rgba(0,0,0,0.38)] backdrop-blur-xl transition-colors duration-500 hover:border-white/[0.18] hover:bg-white/[0.07] lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]"
+              className="group grid overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] shadow-[0_28px_90px_rgba(0,0,0,0.38)] transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#151515] lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]"
               variants={prefersReducedMotion ? undefined : card}
               whileHover={
                 prefersReducedMotion
