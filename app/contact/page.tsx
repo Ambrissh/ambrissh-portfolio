@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FormEvent, useState } from "react";
-
 const questions = [
   "What problem are you obsessed with solving?",
   "What are you currently building or exploring?",
@@ -10,52 +8,7 @@ const questions = [
   "Leave a thought, idea, or question you genuinely care about.",
 ];
 
-type Status = "idle" | "success" | "error";
-
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<Status>("idle");
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    setIsSubmitting(true);
-    setStatus("idle");
-    setMessage("");
-
-    const formData = new FormData(e.currentTarget);
-
-    try {
-      const res = await fetch(
-        "https://formspree.io/f/mnjrnewv",
-        {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      );
-
-      if (res.ok) {
-        setStatus("success");
-        setMessage("Your thoughts have been sent successfully!");
-        (e.target as HTMLFormElement).reset();
-      } else {
-        setStatus("error");
-        setMessage("Failed to send message.");
-      }
-    } catch (error) {
-      console.error(error);
-
-      setStatus("error");
-      setMessage("Failed to send message.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <main className="min-h-screen bg-black px-6 py-32 text-white">
       <section className="mx-auto max-w-4xl">
@@ -82,7 +35,8 @@ export default function ContactPage() {
         </motion.div>
 
         <motion.form
-          onSubmit={handleSubmit}
+          action="https://formspree.io/f/mnjrnewv"
+          method="POST"
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
@@ -137,26 +91,13 @@ export default function ContactPage() {
           <div className="pt-6">
             <button
               type="submit"
-              disabled={isSubmitting}
               className="group relative overflow-hidden rounded-full border border-white/10 bg-white px-10 py-4 font-medium text-black transition-all duration-500 hover:scale-[1.03] hover:bg-white/90 disabled:opacity-50"
             >
               <span className="relative z-10">
-                {isSubmitting ? "Sending..." : "Send Thoughts"}
+                Send Thoughts
               </span>
             </button>
           </div>
-
-          {status === "success" && (
-            <p className="text-sm text-green-400">
-              {message}
-            </p>
-          )}
-
-          {status === "error" && (
-            <p className="text-sm text-red-400">
-              {message}
-            </p>
-          )}
         </motion.form>
       </section>
     </main>
