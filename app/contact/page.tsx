@@ -25,21 +25,19 @@ export default function ContactPage() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("/api/contact", {
+      const res = await fetch("https://formspree.io/f/YOUR_REAL_ID", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Failed to send message");
+      if (res.ok) {
+        setStatus("success");
+        setMessage("Your thoughts have been sent successfully!");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error("Failed to send message");
       }
-
-      setStatus("success");
-      setMessage("Your thoughts have been sent successfully!");
-      (e.target as HTMLFormElement).reset();
     } catch (err: any) {
       setStatus("error");
       setMessage(err.message || "An unexpected error occurred. Please try again.");
