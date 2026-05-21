@@ -1,125 +1,236 @@
 "use client";
-import {
-  motion,
-  useReducedMotion,
-} from "framer-motion";
-import { GitBranch, MoveUpRight } from "lucide-react";
-import { siteContent } from "@/lib/content";
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
-const projectGrid = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const projectCard = {
-  // ✅ Reduced y: 38 → 16 (less layout shift) and removed blur (no repaint)
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease },
-  },
-};
+import { useEffect } from "react";
+import { ExternalLink } from "lucide-react";
 
 export function FeaturedProjectsSection() {
-  const prefersReducedMotion = useReducedMotion();
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll(".reveal-project");
+    elements.forEach((el) => {
+      const htmlEl = el as HTMLElement;
+      htmlEl.style.opacity = "0";
+      htmlEl.style.transform = "translateY(15px)";
+      htmlEl.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out";
+      observer.observe(htmlEl);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
       id="projects"
-      aria-label="Featured Projects"
-      className="relative overflow-hidden bg-black px-6 py-24 sm:py-32 lg:py-40"
+      className="px-6 py-20"
+      style={{ background: "rgba(0,0,0,0.72)" }}
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black via-black/90 to-transparent"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_68%_44%_at_50%_36%,rgba(255,255,255,0.055),transparent_68%)]"
-      />
-      <div className="relative mx-auto max-w-6xl">
-        {/* ✅ Heading — reduced y and removed blur */}
-        <motion.div
-          className="max-w-3xl"
-          initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
-          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.7, ease }}
-        >
-          <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
-            Built signals
-          </p>
-          <h2 className="mt-4 font-sans text-[clamp(2.45rem,6.8vw,5.6rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-white">
-            Featured Projects
-          </h2>
-        </motion.div>
+      <div className="mx-auto w-full max-w-[72rem] grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16 items-start">
+        {/* Left Column: Projects */}
+        <div className="flex flex-col w-full">
+          {/* Heading */}
+          <div className="reveal-project mb-8">
+            <h2 className="font-sans text-[clamp(1.75rem,4vw,2.5rem)] font-semibold text-white tracking-[-0.02em]">
+              Builds I Built (and am building :)
+            </h2>
+          </div>
 
-        <motion.div
-          className="mt-14 grid gap-5 md:grid-cols-2 lg:mt-16"
-          variants={prefersReducedMotion ? undefined : projectGrid}
-          initial={prefersReducedMotion ? undefined : "hidden"}
-          whileInView={prefersReducedMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.05, margin: "-40px" }}
-        >
-          {siteContent.projects.map((project, index) => (
-            <motion.article
-              key={project.title}
-              className="group relative min-h-[300px] overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] p-6 transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#111111] sm:p-7"
-              variants={prefersReducedMotion ? undefined : projectCard}
-              whileHover={
-                prefersReducedMotion
-                  ? undefined
-                  : { y: -5, transition: { duration: 0.35, ease } }
-              }
-            >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,255,255,0.13),transparent_36%)] opacity-45 transition-opacity duration-500 group-hover:opacity-75"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/[0.035] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              />
-              <div className="relative flex h-full min-h-[248px] flex-col justify-between gap-10">
-                <div>
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-white/32">
-                      0{index + 1}
-                    </p>
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/35 shadow-[0_0_18px_rgba(255,255,255,0.35)]" />
-                  </div>
-                  <h3 className="mt-8 font-sans text-[clamp(2rem,4vw,3.3rem)] font-semibold leading-[1] tracking-[-0.045em] text-white">
-                    {project.title}
+          <div className="flex flex-col">
+            {/* Card 1: LoopThru */}
+            <article className="reveal-project group flex flex-row items-start gap-6 rounded-[1.25rem] p-6 bg-white/[0.04] border border-white/[0.09] mb-5 transition-all duration-200 ease-in-out hover:-translate-y-[3px] hover:border-white/18">
+              {/* Logo */}
+              <div className="flex-shrink-0 w-14 h-14 rounded-[0.75rem] overflow-hidden bg-black/40 flex items-center justify-center">
+                <img
+                  src="/loopthru.png"
+                  alt="LoopThru Logo"
+                  className="w-14 h-14 object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="flex-1">
+                <div className="flex justify-between items-start">
+                  <h3 className="font-sans text-[1rem] font-semibold text-white leading-tight">
+                    LoopThru
                   </h3>
-                  <p className="mt-5 max-w-md font-sans text-[0.98rem] leading-[1.7] tracking-[-0.01em] text-white/58 sm:text-[1.04rem]">
-                    {project.description}
-                  </p>
+                  <span className="font-sans text-[0.8rem] font-light text-white/20">
+                    01
+                  </span>
                 </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {["open source", "chrome extension", "groq api"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/12 px-2.5 py-0.5 font-sans font-normal text-[0.7rem] text-white/50 bg-white/[0.01]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Description */}
+                <p className="font-sans text-[0.875rem] font-light leading-[1.7] text-white/60 mt-3">
+                  AI-powered Chrome extension that filters Discord noise using 
+                  Groq API. Sends browser notifications only for messages that actually matter. 
+                  Because who has time to read 400 unread messages.
+                </p>
+
+                {/* Github Link */}
                 <a
-                  href={project.github}
+                  href="https://github.com/Ambrissh/loopthru"
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-white/[0.11] bg-black/28 px-4 py-2.5 font-sans text-[0.78rem] font-medium uppercase tracking-[0.18em] text-white/68 transition duration-300 hover:border-white/[0.22] hover:bg-white/[0.08] hover:text-white"
-                  aria-label={`Open ${project.title} on GitHub`}
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-sans font-normal text-[0.8rem] text-white/38 mt-4.5 decoration-none transition-colors duration-200 hover:text-white/80"
                 >
-                  <GitBranch className="h-4 w-4" aria-hidden />
-                  GitHub
-                  <MoveUpRight
-                    className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    aria-hidden
-                  />
+                  <span>View on GitHub</span>
+                  <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
-            </motion.article>
-          ))}
-        </motion.div>
+            </article>
+
+            {/* Card 2: Cognitive Drift */}
+            <article className="reveal-project group flex flex-row items-start gap-6 rounded-[1.25rem] p-6 bg-white/[0.04] border border-white/[0.09] mb-5 transition-all duration-200 ease-in-out hover:-translate-y-[3px] hover:border-white/18">
+              {/* Logo (Inline SVG) */}
+              <div className="flex-shrink-0 w-14 h-14 rounded-[0.75rem] overflow-hidden bg-black/40">
+                <svg
+                  width="56"
+                  height="56"
+                  viewBox="0 0 56 56"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="56" height="56" rx="10" fill="url(#grad)" />
+                  <defs>
+                    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="#1a1a2e" />
+                      <stop offset="100%" stopColor="#16213e" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M6 28 C13 18, 20 38, 27 28 C34 18, 41 38, 50 24"
+                    stroke="rgba(100,180,255,0.9)"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  <path
+                    d="M6 32 C13 22, 20 42, 27 32 C34 22, 41 42, 50 28"
+                    stroke="rgba(180,100,255,0.9)"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                </svg>
+              </div>
+
+              {/* Content */}
+              <div className="flex-1">
+                <div className="flex justify-between items-start">
+                  <h3 className="font-sans text-[1rem] font-semibold text-white leading-tight">
+                    Cognitive Drift
+                  </h3>
+                  <span className="font-sans text-[0.8rem] font-light text-white/20">
+                    02
+                  </span>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {["open source", "llm observability", "ml"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/12 px-2.5 py-0.5 font-sans font-normal text-[0.7rem] text-white/50 bg-white/[0.01]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Description */}
+                <p className="font-sans text-[0.875rem] font-light leading-[1.7] text-white/60 mt-3">
+                  Real-time observability for LLM uncertainty and reasoning 
+                  instability. Tracks when models start losing the plot mid-generation. 
+                  Turns out that happens more than you'd think.
+                </p>
+
+                {/* Github Link */}
+                <a
+                  href="https://github.com/Ambrissh/cognitive-drift"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-sans font-normal text-[0.8rem] text-white/38 mt-4.5 decoration-none transition-colors duration-200 hover:text-white/80"
+                >
+                  <span>View on GitHub</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        {/* Right Column: GitHub Activity & Stats */}
+        <div className="reveal-project flex flex-col w-full lg:mt-[4.5rem]">
+          {/* GitHub chart image */}
+          <div className="overflow-hidden rounded-[0.75rem] border border-white/[0.07] bg-black p-4 flex items-center justify-center max-w-[420px]">
+            <img
+              src="https://ghchart.rshah.org/Ambrissh"
+              alt="Ambrissh GitHub contributions"
+              style={{
+                width: "100%",
+                borderRadius: "0.75rem",
+                opacity: 0.72,
+                filter: "invert(1) hue-rotate(180deg)",
+                border: "1px solid rgba(255,255,255,0.07)"
+              }}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          {/* GitHub link */}
+          <a
+            href="https://github.com/Ambrissh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block font-sans text-[0.8rem] font-light mt-3 self-start decoration-none text-white/35 hover:text-white/70 transition-colors duration-200 mb-10"
+          >
+            github.com/Ambrissh →
+          </a>
+
+          {/* Stats */}
+          <div className="flex flex-col gap-5">
+            {[
+              { number: "4+", label: "Projects shipped" },
+              { number: "3", label: "Research collaborations" },
+            ].map((stat, idx) => (
+              <div
+                key={idx}
+                className="border-l-2 border-white/12 pl-4 flex flex-col py-0.5"
+              >
+                <span className="font-sans text-[1.75rem] font-semibold text-white leading-none">
+                  {stat.number}
+                </span>
+                <span className="font-sans text-[0.8rem] font-light text-white/45 mt-1">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

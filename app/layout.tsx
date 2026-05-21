@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { Navbar } from "@/components/Navbar";
+import { DoodleBackground } from "@/components/home/DoodleBackground";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
-
-// ❌ REMOVED: Inter font — was overriding Geist on body, wasted network request
-// ❌ REMOVED: Navbar from page.tsx — it belongs here in layout only
 
 export const metadata: Metadata = {
   title: "Ambrissh S. Raghav",
@@ -25,8 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} relative h-full`}>
-      <body className={geistSans.variable}>
+    <html lang="en" className={`${spaceGrotesk.variable} relative h-full`}>
+      <body className={`${spaceGrotesk.variable} antialiased`}>
+        <DoodleBackground />
         <Navbar />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>

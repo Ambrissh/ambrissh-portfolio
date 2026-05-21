@@ -1,20 +1,22 @@
+@import url('https://fonts.google.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "lenis/dist/lenis.css";
 
 html {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   scroll-behavior: auto !important;
-  /* ✅ Force GPU layer on root — Safari compositing fix */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  color-scheme: dark;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   background: black;
   color: white;
-  /* ✅ Prevents Safari from creating new stacking contexts on scroll */
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 :root {
@@ -30,17 +32,13 @@ body {
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-sans: 'Space Grotesk', sans-serif;
 }
 
 .font-display {
-  font-family: var(--font-display), var(--font-geist-sans), -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-html {
-  color-scheme: dark;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 html.lenis,
@@ -52,27 +50,93 @@ html.lenis body {
   scroll-behavior: auto !important;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  /* ✅ Safari font rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* ✅ Forces hardware acceleration on body in Safari */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-/* ✅ GPU-accelerate all framer-motion animated elements in Safari */
-[style*="transform"], [style*="opacity"] {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: transform;
-}
-
 ::selection {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
+}
+
+/* CSS-only Marquee Animations */
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 32s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scrollRight 32s linear infinite;
+}
+
+/* CSS-only fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* CSS-only popup fade-in */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-popup-fade-in {
+  animation: popupFadeIn 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* CSS-only reveal animation for IntersectionObserver */
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-visible {
+  animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered delays for podcast cards */
+.reveal-delay-1 { animation-delay: 0.13s; }
+.reveal-delay-2 { animation-delay: 0.26s; }
+.reveal-delay-3 { animation-delay: 0.39s; }
+
+/* Hero cinematic ambient pulse */
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.28; }
+  50% { opacity: 0.38; }
+}
+
+.animate-ambient-pulse {
+  animation: ambientPulse 6s ease-in-out infinite;
+}
+
+/* Hero noise fade-in */
+@keyframes noiseFadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.06; }
+}
+
+.animate-noise-fade {
+  animation: noiseFadeIn 4.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

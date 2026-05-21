@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function PodcastsPage() {
   return (
-    <main className="bg-black text-white overflow-hidden">
+    <main className="relative bg-black text-white" style={{ zIndex: 1 }}>
       <PodcastHeroSection />
       <PodcastBioSection />
       <FeaturedPodcastsSection />

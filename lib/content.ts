@@ -5,11 +5,11 @@ export const siteContent = {
   tagline:
     "Physics Student • AI Builder • Podcast Host • Curious About the Future",
   bio: [
-    "I’m Ambrissh S. Raghav, a fourth-year BS-MS Physics student at Indian Institute of Science Education and Research Berhampur with a strong interest in machine learning and AI-driven product development.",
-    "I’m passionate about building well-architected solutions to real-world problems using AI, while constantly exploring new fields to expand my perspective.",
-    "Over the years, I’ve worked across areas including cryptography, embedded systems, and cybersecurity, though my core interest has always remained the same — building meaningful products and turning ambitious ideas into reality.",
-    "Alongside this, I host Metaverse Entangled, a podcast where I speak with founders, scientists, and researchers working on frontier technologies and challenging problems.",
-    "I also enjoy taking initiatives, organizing communities, and collaborating with driven people, so if you’d like to connect or work together, feel free to reach out through the contact page.",
+    "I'm Ambrissh S. Raghav — stepping into my fourth year of BS-MS Physics at IISER Berhampur. Technically a physicist, but mostly found building things with AI.",
+    "AI is moving fast and honestly it's kind of insane to watch. My take? It's all about building well-architected solutions to real problems — not just vibing with the hype. I'm somewhere in the middle of figuring that out, one project at a time.",
+    "I've bounced around a bit — cryptography, embedded systems, cybersecurity — but the through line has always been the same: I like building things that actually do something.",
+    "I also host Metaverse Entangled, a podcast where I get to have conversations with founders, scientists, and researchers who are genuinely doing interesting things. It started as curiosity. Still is, honestly.",
+    "If you want to build something together, talk ideas, or just say hi — hit the contact page. I don't bite.",
   ],
   projects: [
     {

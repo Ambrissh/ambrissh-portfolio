@@ -1,12 +1,14 @@
 "use client";
 import Lenis from "lenis";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 type SmoothScrollProviderProps = {
   children: React.ReactNode;
 };
 
 export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
+  const rafIdRef = useRef<number>(0);
+
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.1,
@@ -17,13 +19,13 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafIdRef.current = requestAnimationFrame(raf);
     }
 
-    const rafId = requestAnimationFrame(raf);
+    rafIdRef.current = requestAnimationFrame(raf);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(rafIdRef.current);
       lenis.destroy();
     };
   }, []);

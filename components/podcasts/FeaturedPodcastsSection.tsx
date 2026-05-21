@@ -69,7 +69,7 @@ export function FeaturedPodcastsSection() {
             Featured conversations
           </p>
           <h2 className="mt-4 font-sans text-[clamp(2.45rem,6.8vw,5.6rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-white">
-            Episodes that open doors.
+            Featured Conversations
           </h2>
         </motion.div>
 

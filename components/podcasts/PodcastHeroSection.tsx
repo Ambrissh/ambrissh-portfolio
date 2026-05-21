@@ -13,24 +13,14 @@ export function PodcastHeroSection() {
       aria-label="Metaverse Entangled"
       className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-black px-6"
     >
-      <motion.div
+      {/* Static dot grid — no animation, no oversized element */}
+      <div
         aria-hidden
-        className="pointer-events-none absolute inset-[-35%] opacity-[0.04]"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             "radial-gradient(circle at center, rgba(255,255,255,0.9) 0 1px, transparent 1px)",
           backgroundSize: "64px 64px",
-        }}
-        animate={
-          prefersReducedMotion
-            ? undefined
-            : { x: ["-1.5%", "1.5%"], y: ["-1%", "1%"] }
-        }
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "mirror",
-          ease: "linear",
         }}
       />
       <motion.div

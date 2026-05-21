@@ -81,7 +81,7 @@ export function PodcastBioSection() {
             The conversation layer
           </p>
           <h2 className="mt-4 max-w-[11ch] font-sans text-[clamp(2.45rem,6.5vw,5.5rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-white">
-            Why it exists?
+            Why I started it ?
           </h2>
           <div className="mt-8 max-w-2xl space-y-5 font-sans text-[0.98rem] font-normal leading-[1.75] tracking-[-0.01em] text-white/58 sm:text-[1.05rem]">
             {siteContent.podcast.bio.map((paragraph) => (
