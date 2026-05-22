@@ -57,13 +57,23 @@ html.lenis body {
 
 /* CSS-only Marquee Animations */
 @keyframes scrollLeft {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes scrollRight {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 .animate-scroll-left {
@@ -76,8 +86,13 @@ html.lenis body {
 
 /* CSS-only fade-in */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .animate-fade-in {
@@ -90,6 +105,7 @@ html.lenis body {
     opacity: 0;
     transform: translateY(18px) scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -106,6 +122,7 @@ html.lenis body {
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -117,14 +134,29 @@ html.lenis body {
 }
 
 /* Staggered delays for podcast cards */
-.reveal-delay-1 { animation-delay: 0.13s; }
-.reveal-delay-2 { animation-delay: 0.26s; }
-.reveal-delay-3 { animation-delay: 0.39s; }
+.reveal-delay-1 {
+  animation-delay: 0.13s;
+}
+
+.reveal-delay-2 {
+  animation-delay: 0.26s;
+}
+
+.reveal-delay-3 {
+  animation-delay: 0.39s;
+}
 
 /* Hero cinematic ambient pulse */
 @keyframes ambientPulse {
-  0%, 100% { opacity: 0.28; }
-  50% { opacity: 0.38; }
+
+  0%,
+  100% {
+    opacity: 0.28;
+  }
+
+  50% {
+    opacity: 0.38;
+  }
 }
 
 .animate-ambient-pulse {
@@ -133,8 +165,13 @@ html.lenis body {
 
 /* Hero noise fade-in */
 @keyframes noiseFadeIn {
-  from { opacity: 0; }
-  to { opacity: 0.06; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.06;
+  }
 }
 
 .animate-noise-fade {
