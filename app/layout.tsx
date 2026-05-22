@@ -21,19 +21,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icon.png?v=2",
+        url: "/icon.png?v=3",
         type: "image/png",
         sizes: "512x512",
       },
     ],
     apple: [
       {
-        url: "/apple-icon.png?v=2",
+        url: "/apple-icon.png?v=3",
         type: "image/png",
         sizes: "512x512",
       },
     ],
-    shortcut: "/icon.png?v=2",
+    shortcut: "/icon.png?v=3",
   },
 };
 
