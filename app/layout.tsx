@@ -12,9 +12,29 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Ambrissh S. Raghav",
+  title: {
+    default: "Ambrissh S. Raghav",
+    template: "%s | Ambrissh S. Raghav",
+  },
   description:
     "Physics student, AI builder, and host of Metaverse Entangled — building meaningful products at the frontier of technology.",
+  icons: {
+    icon: [
+      {
+        url: "/icon.png?v=2",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-icon.png?v=2",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    shortcut: "/icon.png?v=2",
+  },
 };
 
 export default function RootLayout({
