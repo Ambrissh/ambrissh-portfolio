@@ -9,7 +9,7 @@ const ARTICLE = {
   author: "Ambrissh",
   readTime: "6 min read",
   title: "The Death of Academic Titles in the AI Era",
-  hook: `Why are some of the most influential minds in AI — despite holding PhDs from top institutions — almost never publicly addressed as 'Dr.' anymore? Has startup culture quietly replaced academic prestige with product impact, execution, and public influence?`,
+  hook: `Why are some of the most influential minds in AI, despite holding PhDs from top institutions, almost never publicly addressed as 'Dr.' anymore? Has startup culture quietly replaced academic prestige with product impact, execution, and public influence?
 };
 
 /* ─── full article paragraphs ───────────────────────────────── */
@@ -101,22 +101,10 @@ export default function BlogPage() {
   const [commentText, setCommentText] = useState("");
   const [commentName, setCommentName] = useState("");
   const [comments, setComments] = useState<Comment[]>([
-    {
-      id: 1,
-      name: "Arjun M.",
-      text: "Brilliant observation. I've noticed this too — in CS conferences nobody uses 'Dr.' anymore, but in physics it's still everywhere. The cultural divide is real.",
-      likes: 12,
-      likedByUser: false,
-      time: "2 hours ago",
-    },
-    {
-      id: 2,
-      name: "Sneha R.",
-      text: "As someone finishing their PhD, this resonated deeply. The title feels less important when you see what people are building without one.",
-      likes: 8,
-      likedByUser: false,
-      time: "5 hours ago",
-    },
+    
+
+   
+    
   ]);
 
   const articleRef = useRef<HTMLDivElement>(null);
