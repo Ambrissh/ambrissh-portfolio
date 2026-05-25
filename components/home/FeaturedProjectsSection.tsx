@@ -142,10 +142,10 @@ export function FeaturedProjectsSection() {
 
                 {/* Description */}
                 <p className="font-sans text-[0.875rem] font-light leading-[1.7] text-white/60 mt-3">
-                  Chrome extension that watches your Claude.ai context window and
-                  nudges you to switch chats before you lose your flow. Generates
-                  full continuity handoffs so the next chat picks up exactly where
-                  you left off. Claude + Flow = Clowde.
+                  Use Claude without hitting limits! An easy to use extension that 
+                  watches your Claude.ai context window and nudges you to switch chats 
+                  before you lose your flow. Generates full continuity handoffs so the 
+                  next chat picks up exactly where you left off. Claude + Flow = Clowde.
                 </p>
 
                 {/* Github Link */}
