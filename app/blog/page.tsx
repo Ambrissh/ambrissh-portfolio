@@ -3,7 +3,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-/* ─── article data ──────────────────────────────────────────── */
 const ARTICLE = {
   date: "May 25, 2026",
   author: "Ambrissh",
@@ -12,7 +11,6 @@ const ARTICLE = {
   hook: `Why are some of the most influential minds in AI, despite holding PhDs from top institutions, almost never publicly addressed as 'Dr.' anymore? Has startup culture quietly replaced academic prestige with product impact, execution, and public influence?`,
 };
 
-/* ─── full article paragraphs ───────────────────────────────── */
 const PARAGRAPHS: { text: string; isQuote?: boolean }[] = [
   {
     text: `Finally, after mustering the courage and pulling everything together, I have decided to write my first blog post! I've always wanted to express my thoughts and strongly believe in the power of outreach. This is one of the main reasons I started my podcast series, Metaverse Entangled (do check it out if you're curious on YouTube!). I believe writing genuine, non-AI-generated content (though I do sometimes inspect AI-generated content) can leave a lasting impact :)!`,
@@ -99,20 +97,19 @@ export default function BlogPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[#0a0a0a] text-white overflow-hidden">
-      {/* subtle top border */}
+    <main className="relative min-h-screen bg-[#090909] text-white overflow-hidden">
+      {/* subtle top line */}
       <div
-        aria-hidden="true"
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(to right, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent)",
+            "linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)",
         }}
       />
 
-      {/* HERO SECTION */}
-      <section className="relative px-6 pt-[9rem] pb-20 md:pt-[11rem]">
-        <div className="mx-auto max-w-[44rem]">
+      {/* HERO */}
+      <section className="relative px-6 pt-[9rem] pb-24 md:pt-[11rem]">
+        <div className="mx-auto max-w-[46rem]">
           {/* meta */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -122,11 +119,11 @@ export default function BlogPage() {
           >
             <time>{ARTICLE.date}</time>
 
-            <span className="inline-block w-1 h-1 rounded-full bg-white/25" />
+            <span className="w-1 h-1 rounded-full bg-white/20" />
 
             <span>Written by {ARTICLE.author}</span>
 
-            <span className="inline-block w-1 h-1 rounded-full bg-white/25" />
+            <span className="w-1 h-1 rounded-full bg-white/20" />
 
             <span>{ARTICLE.readTime}</span>
           </motion.div>
@@ -136,7 +133,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-center text-[clamp(2.2rem,6vw,4.5rem)] font-bold leading-[1.08] tracking-[-0.04em] text-white mb-12"
+            className="text-center text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.05] tracking-[-0.05em] text-white mb-12"
           >
             {ARTICLE.title}
           </motion.h1>
@@ -154,12 +151,8 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative text-center text-[1.05rem] md:text-[1.15rem] font-light leading-[1.9] text-white/55 italic px-4 md:px-10"
+            className="text-center text-[1.05rem] md:text-[1.15rem] font-light italic leading-[1.9] text-white/55 px-4 md:px-10"
           >
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[3rem] text-white/10">
-              "
-            </span>
-
             {ARTICLE.hook}
           </motion.blockquote>
 
@@ -167,7 +160,7 @@ export default function BlogPage() {
           <AnimatePresence>
             {!expanded && (
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
@@ -175,7 +168,7 @@ export default function BlogPage() {
               >
                 <button
                   onClick={handleReadMore}
-                  className="group rounded-full border border-white/10 bg-white/[0.03] px-8 py-3 text-[0.85rem] tracking-wide text-white/65 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
+                  className="rounded-full border border-white/10 bg-white/[0.03] px-8 py-3 text-[0.85rem] tracking-wide text-white/65 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
                 >
                   Read More
                 </button>
@@ -205,97 +198,52 @@ export default function BlogPage() {
             />
 
             <div className="mx-auto max-w-[40rem]">
-              {/* title */}
+              {/* article title */}
               <h2 className="text-center text-[clamp(1.8rem,4vw,2.6rem)] font-bold tracking-[-0.03em] mb-16">
                 {ARTICLE.title}
               </h2>
 
               {/* content */}
-              <div>
-                {PARAGRAPHS.map((para, i) => {
-                  if (para.isQuote) {
-                    return (
-                      <motion.blockquote
-                        key={i}
-                        initial={{ opacity: 0, x: -12 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="border-l border-white/15 pl-6 py-3 my-10 italic text-white/60 text-[1.05rem] leading-[1.9]"
-                      >
-                        {para.text}
-                      </motion.blockquote>
-                    );
-                  }
-
+              {PARAGRAPHS.map((para, i) => {
+                if (para.isQuote) {
                   return (
-                    <motion.p
+                    <motion.blockquote
                       key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, x: -12 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.5 }}
-                      className="text-[1rem] md:text-[1.05rem] font-light leading-[1.95] text-white/70 mb-8"
+                      transition={{ duration: 0.6 }}
+                      className="border-l border-white/15 pl-6 py-3 my-10 italic text-white/60 text-[1.05rem] leading-[1.9]"
                     >
                       {para.text}
-                    </motion.p>
+                    </motion.blockquote>
                   );
-                })}
-              </div>
+                }
+
+                return (
+                  <motion.p
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-[1rem] md:text-[1.05rem] font-light leading-[1.95] text-white/70 mb-8"
+                  >
+                    {para.text}
+                  </motion.p>
+                );
+              })}
 
               {/* ending dots */}
-              <div className="flex items-center justify-center gap-3 mt-20 mb-12">
+              <div className="flex items-center justify-center gap-3 mt-20">
                 <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
                 <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
                 <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
               </div>
-            </div>
 
-            {/* ABOUT AUTHOR */}
-            <section className="mx-auto max-w-[38rem] mt-20">
-              {/* subtle divider */}
-              <div
-                className="mb-16 h-px"
-                style={{
-                  background:
-                    "linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)",
-                }}
-              />
-
-              <div className="text-center max-w-[30rem] mx-auto">
-                <h3 className="text-[0.78rem] uppercase tracking-[0.28em] text-white/30 mb-5">
-                  About the Author
-                </h3>
-
-                <p className="text-[0.95rem] md:text-[1rem] leading-[1.9] text-white/50 font-light">
-                  Ambrissh is a physics major at IISER Berhampur interested in AI,
-                  startups, research culture, and technology communication.
-                  He also hosts the podcast Metaverse Entangled.
-                </p>
-
-                {/* links */}
-                <div className="flex items-center justify-center gap-8 mt-8">
-                  <a
-                    href="https://x.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[0.82rem] tracking-wide text-white/35 hover:text-white/70 transition-colors duration-300"
-                  >
-                    X / Twitter
-                  </a>
-
-                  <a
-                    href="mailto:ambrissh23@iiserbpr.ac.in"
-                    className="text-[0.82rem] tracking-wide text-white/35 hover:text-white/70 transition-colors duration-300"
-                  >
-                    Email
-                  </a>
-                </div>
-              </div>
-
-              {/* breathing room */}
+              {/* ending spacing */}
               <div className="h-28" />
-            </section>
+            </div>
           </motion.article>
         )}
       </AnimatePresence>
