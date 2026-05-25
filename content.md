@@ -60,6 +60,14 @@ https://github.com/Ambrissh/loopthru.git
 Description:
 AI-powered Chrome extension that filters Discord noise and notifies you only when a message matches your intent.
 
+## Clowde
+
+GitHub:
+https://github.com/Ambrissh/Clowde.git
+
+Description:
+Chrome extension that monitors Claude.ai context window usage and generates continuity handoffs for seamless chat transitions.
+
 ## Cognitive Drift
 
 GitHub:

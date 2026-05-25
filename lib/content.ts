@@ -19,6 +19,12 @@ export const siteContent = {
       github: "https://github.com/Ambrissh/loopthru.git",
     },
     {
+      title: "Clowde",
+      description:
+        "Chrome extension that monitors Claude.ai context window usage and generates continuity handoffs for seamless chat transitions.",
+      github: "https://github.com/Ambrissh/Clowde.git",
+    },
+    {
       title: "Cognitive Drift",
       description:
         "Real-time observability for LLM uncertainty and reasoning instability.",

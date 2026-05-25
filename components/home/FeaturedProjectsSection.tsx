@@ -104,7 +104,64 @@ export function FeaturedProjectsSection() {
               </div>
             </article>
 
-            {/* Card 2: Cognitive Drift */}
+            {/* Card 2: Clowde */}
+            <article className="reveal-project group flex flex-row items-start gap-6 rounded-[1.25rem] p-6 bg-white/[0.04] border border-white/[0.09] mb-5 transition-all duration-200 ease-in-out hover:-translate-y-[3px] hover:border-white/18">
+              {/* Logo */}
+              <div className="flex-shrink-0 w-14 h-14 rounded-[0.75rem] overflow-hidden bg-black/40 flex items-center justify-center">
+                <img
+                  src="/clowde.png"
+                  alt="Clowde Logo"
+                  className="w-14 h-14 object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="flex-1">
+                <div className="flex justify-between items-start">
+                  <h3 className="font-sans text-[1rem] font-semibold text-white leading-tight">
+                    Clowde
+                  </h3>
+                  <span className="font-sans text-[0.8rem] font-light text-white/20">
+                    02
+                  </span>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {["open source", "chrome extension", "context management"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/12 px-2.5 py-0.5 font-sans font-normal text-[0.7rem] text-white/50 bg-white/[0.01]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Description */}
+                <p className="font-sans text-[0.875rem] font-light leading-[1.7] text-white/60 mt-3">
+                  Chrome extension that watches your Claude.ai context window and
+                  nudges you to switch chats before you lose your flow. Generates
+                  full continuity handoffs so the next chat picks up exactly where
+                  you left off. Claude + Flow = Clowde.
+                </p>
+
+                {/* Github Link */}
+                <a
+                  href="https://github.com/Ambrissh/Clowde"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-sans font-normal text-[0.8rem] text-white/38 mt-4.5 decoration-none transition-colors duration-200 hover:text-white/80"
+                >
+                  <span>View on GitHub</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </article>
+
+            {/* Card 3: Cognitive Drift */}
             <article className="reveal-project group flex flex-row items-start gap-6 rounded-[1.25rem] p-6 bg-white/[0.04] border border-white/[0.09] mb-5 transition-all duration-200 ease-in-out hover:-translate-y-[3px] hover:border-white/18">
               {/* Logo (Inline SVG) */}
               <div className="flex-shrink-0 w-14 h-14 rounded-[0.75rem] overflow-hidden bg-black/40">
@@ -144,7 +201,7 @@ export function FeaturedProjectsSection() {
                     Cognitive Drift
                   </h3>
                   <span className="font-sans text-[0.8rem] font-light text-white/20">
-                    02
+                    03
                   </span>
                 </div>
 
@@ -214,7 +271,7 @@ export function FeaturedProjectsSection() {
           {/* Stats */}
           <div className="flex flex-col gap-5">
             {[
-              { number: "4+", label: "Projects shipped" },
+              { number: "5+", label: "Projects shipped" },
               { number: "3", label: "Research collaborations" },
             ].map((stat, idx) => (
               <div
