@@ -236,6 +236,62 @@ export function FeaturedProjectsSection() {
                 </a>
               </div>
             </article>
+
+            {/* Card 4: LoopNote */}
+            <article className="reveal-project group flex flex-row items-start gap-6 rounded-[1.25rem] p-6 bg-white/[0.04] border border-white/[0.09] mb-5 transition-all duration-200 ease-in-out hover:-translate-y-[3px] hover:border-white/18">
+              {/* Logo */}
+              <div className="flex-shrink-0 w-14 h-14 rounded-[0.75rem] overflow-hidden bg-black/40 flex items-center justify-center">
+                <img
+                  src="/loopnote.png"
+                  alt="LoopNote Logo"
+                  className="w-14 h-14 object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="flex-1">
+                <div className="flex justify-between items-start">
+                  <h3 className="font-sans text-[1rem] font-semibold text-white leading-tight">
+                    LoopNote
+                  </h3>
+                  <span className="font-sans text-[0.8rem] font-light text-white/20">
+                    04
+                  </span>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {["open source", "chrome extension", "chatgpt"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/12 px-2.5 py-0.5 font-sans font-normal text-[0.7rem] text-white/50 bg-white/[0.01]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Description */}
+                <p className="font-sans text-[0.875rem] font-light leading-[1.7] text-white/60 mt-3">
+                  Stop switching chats and losing context. LoopNote gives you a 
+                  parallel workspace inside ChatGPT for quick questions, notes, 
+                  and saved insights. Your side-brain, basically.
+                </p>
+
+                {/* Github Link */}
+                <a
+                  href="https://github.com/Ambrissh/Loopnote"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-sans font-normal text-[0.8rem] text-white/38 mt-4.5 decoration-none transition-colors duration-200 hover:text-white/80"
+                >
+                  <span>View on GitHub</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </article>
           </div>
         </div>
 
