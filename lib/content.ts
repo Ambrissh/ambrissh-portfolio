@@ -50,6 +50,12 @@ export const siteContent = {
       },
       {
         title:
+          "New Featured Episode | Metaverse Entangled",
+        youtube: "https://youtu.be/iececaOOHB8?si=fXzetMjICyDRoIci",
+        videoId: "iececaOOHB8",
+      },
+      {
+        title:
           "9 Minutes with an IIT Director! | Ft Prof B.S Murty, Director IIT Hyderabad",
         youtube: "https://youtu.be/x5XyQ-asd6Q?si=EkZDTcqkdN5kbb-q",
         videoId: "x5XyQ-asd6Q",
