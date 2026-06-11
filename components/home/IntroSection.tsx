@@ -151,7 +151,7 @@ export function IntroSection() {
               Technically a physics major, but more interested in Machine Learning , particularly in the area of Mechanistic Interpretability.
             </p>
             <p>
-              Over the past I have worked around various areas like quantum communications , embedded systems , cybersecurity , ML modelling for
+              Over the past I have worked around various areas like quantum communications , embedded systems , cybersecurity and ML modelling for
               defence tech before finally making my jump into Mech Interp . I also enjoy building
               things with AI both for mech interp and for my convenience . Some stuff I've made  are listed below !
             </p>
@@ -159,7 +159,7 @@ export function IntroSection() {
             <p>
               I also host Metaverse Entangled, a podcast series where I talk to founders,
               scientists, and researchers doing genuinely interesting things.
-              Started as curiosity. Still is. You can learn more by going to the "My Podcasts" page .
+              It started as curiosity ,still is. You can learn more by going to the "My Podcasts!" page .
             </p>
             <p>
               If you are interested in Mech Interp or want to build something together or just say Hi —
