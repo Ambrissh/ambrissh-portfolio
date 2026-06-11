@@ -50,7 +50,7 @@ export const siteContent = {
       },
       {
         title:
-          "New Featured Episode | Metaverse Entangled",
+          "AIR-1 JEE to a Physicist, The journey and more! | Ft Dr Rajesh Gopakumar, Director ICTS - TIFR",
         youtube: "https://youtu.be/iececaOOHB8?si=fXzetMjICyDRoIci",
         videoId: "iececaOOHB8",
       },
