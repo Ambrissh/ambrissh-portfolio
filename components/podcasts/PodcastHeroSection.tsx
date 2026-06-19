@@ -52,6 +52,9 @@ export function PodcastHeroSection() {
         <h1 className="font-sans text-[clamp(3.1rem,10vw,8.6rem)] font-semibold leading-[0.9] tracking-[-0.065em] text-white">
           {siteContent.podcast.name}
         </h1>
+        <p className="mt-5 font-sans text-[clamp(1.5rem,4vw,3.8rem)] font-semibold leading-[0.95] tracking-[-0.055em] text-white/70">
+          I interview people :)
+        </p>
         <p className="mx-auto mt-8 max-w-2xl font-sans text-[clamp(1rem,2vw,1.35rem)] font-medium leading-relaxed tracking-[-0.02em] text-white/48">
           {siteContent.podcast.subheading}
         </p>
