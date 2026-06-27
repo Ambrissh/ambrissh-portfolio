@@ -76,6 +76,20 @@ https://github.com/Ambrissh/cognitive-drift.git
 Description:
 Real-time observability for LLM uncertainty and reasoning instability.
 
+# BRAND WEBSITES
+
+I also build websites and optimize SEO and GEO for brands.
+
+## PS4 Gaming Lounge Thanjavur
+
+Website:
+https://ps4loungetnj.in
+
+## Sigaram Physiotherapy Clinic
+
+Website:
+https://sigaramphysio.in
+
 # PODCAST
 
 Podcast Name:

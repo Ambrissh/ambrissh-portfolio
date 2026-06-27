@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Globe2, Search, Sparkles } from "lucide-react";
+import { siteContent } from "@/lib/content";
 
 export function FeaturedProjectsSection() {
   useEffect(() => {
@@ -342,6 +343,76 @@ export function FeaturedProjectsSection() {
                 </span>
               </div>
             ))}
+          </div>
+
+          {/* Brand websites */}
+          <div className="mt-12 max-w-[420px]">
+            <div className="flex items-center gap-2 text-white/35">
+              <Globe2 className="h-3.5 w-3.5" aria-hidden />
+              <span className="font-sans text-[0.68rem] font-medium uppercase tracking-[0.24em]">
+                Websites + visibility
+              </span>
+            </div>
+
+            <h3 className="mt-3 max-w-[18rem] font-sans text-[1.2rem] font-semibold leading-[1.25] tracking-[-0.02em] text-white">
+              I&apos;ve also built websites for brands.
+            </h3>
+            <p className="mt-2 max-w-sm font-sans text-[0.8rem] font-light leading-[1.65] text-white/48">
+              From design and development to SEO and GEO, built to help local
+              businesses get discovered.
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.025] px-2.5 py-1 font-sans text-[0.66rem] text-white/48">
+                <Search className="h-3 w-3" aria-hidden />
+                SEO
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.025] px-2.5 py-1 font-sans text-[0.66rem] text-white/48">
+                <Sparkles className="h-3 w-3" aria-hidden />
+                GEO
+              </span>
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              {siteContent.brandWebsites.map((website, index) => (
+                <a
+                  key={website.url}
+                  href={website.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group overflow-hidden rounded-[0.9rem] border border-white/[0.09] bg-white/[0.035] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.055]"
+                >
+                  <div className="relative aspect-video overflow-hidden border-b border-white/[0.07] bg-black">
+                    <img
+                      src={website.preview}
+                      alt={`${website.title} website preview`}
+                      className="h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-[1.025] group-hover:opacity-95"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+                  </div>
+
+                  <div className="flex items-start justify-between gap-4 p-4">
+                    <div>
+                      <span className="font-mono text-[0.62rem] text-white/25">
+                        0{index + 1}
+                      </span>
+                      <h4 className="mt-1 font-sans text-[0.9rem] font-semibold leading-tight text-white/82">
+                        {website.title}
+                      </h4>
+                      <p className="mt-1 font-sans text-[0.68rem] text-white/36">
+                        {website.location}
+                      </p>
+                      <p className="mt-2 font-sans text-[0.72rem] text-white/48 transition-colors duration-200 group-hover:text-white/75">
+                        {website.url}
+                      </p>
+                    </div>
+                    <ExternalLink className="mt-1 h-3.5 w-3.5 flex-none text-white/28 transition-colors duration-200 group-hover:text-white/70" />
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

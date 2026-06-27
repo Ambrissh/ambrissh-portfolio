@@ -31,6 +31,22 @@ export const siteContent = {
       github: "https://github.com/Ambrissh/cognitive-drift.git",
     },
   ],
+  brandWebsites: [
+    {
+      title: "PS4 Gaming Lounge",
+      location: "Thanjavur",
+      url: "ps4loungetnj.in",
+      href: "https://ps4loungetnj.in",
+      preview: "/assets/ps4-lounge-preview.jpg",
+    },
+    {
+      title: "Sigaram Physiotherapy Clinic",
+      location: "Thanjavur",
+      url: "sigaramphysio.in",
+      href: "https://sigaramphysio.in",
+      preview: "/assets/sigaram-physio-preview.jpg",
+    },
+  ],
   podcast: {
     name: "Metaverse Entangled",
     subheading: "Changing the world for better and for always",
