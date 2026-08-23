@@ -3,10 +3,10 @@ export const siteContent = {
   quote: "So to speak, we did it!",
   intro: "Hey there! I’m Ambrissh!",
   tagline:
-    "Physics Student • AI Builder • Podcast Host • Curious About the Future",
+    "AI Engineer • RAG Builder • Podcast Host • Curious About the Future",
   bio: [
-    "I'm Ambrissh S. Raghav — stepping into my fourth year of BS-MS Physics at IISER Berhampur. Technically a physicist, but mostly found building things with AI.",
-    "AI is moving fast and honestly it's kind of insane to watch. My take? It's all about building well-architected solutions to real problems — not just vibing with the hype. I'm somewhere in the middle of figuring that out, one project at a time.",
+    "I'm Ambrissh S. Raghav — stepping into my fourth year of BS-MS Physics at IISER Berhampur. Technically a physicist, but mostly found building AI systems.",
+    "I focus on AI engineering: reliable RAG pipelines, retrieval, evaluation, and LLM-powered products that solve real problems.",
     "I've bounced around a bit — cryptography, embedded systems, cybersecurity — but the through line has always been the same: I like building things that actually do something.",
     "I also host Metaverse Entangled, a podcast where I get to have conversations with founders, scientists, and researchers who are genuinely doing interesting things. It started as curiosity. Still is, honestly.",
     "If you want to build something together, talk ideas, or just say hi — hit the contact page. I don't bite.",

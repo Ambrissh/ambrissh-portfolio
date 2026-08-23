@@ -6,7 +6,7 @@ Short Intro:
 Hey there, I’m Ambrissh.
 
 Tagline:
-Physics Student • AI Builder • Podcast Host • Curious About the Future
+AI Engineer • RAG Builder • Podcast Host • Curious About the Future
 
 Bio:
 I’m Ambrissh S. Raghav, a fourth-year BS-MS Physics student at Indian Institute of Science Education and Research Berhampur with a strong interest in machine learning and AI-driven product development.

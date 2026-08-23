@@ -4,13 +4,13 @@ import { useEffect } from "react";
 
 export function SkillsSection() {
   const row1 = [
-    "Python", "C++", "JavaScript", "React", "Next.js", 
-    "PyTorch", "JAX", "Scikit-Learn", "CleanRL", "Gymnasium"
+    "Python", "TypeScript", "React", "Next.js", "PyTorch",
+    "LLM APIs", "RAG Pipelines", "Vector Search", "Evaluation", "Prompt Engineering"
   ];
   
   const row2 = [
-    "Stable Baselines3", "STM32", "MPU6050", "OpenOCD", 
-    "ARM Semihosting", "Git", "Linux", "Bash", "MATLAB", "LaTeX"
+    "PostgreSQL", "Docker", "Git", "Linux", "Bash", "C++",
+    "JAX", "Scikit-Learn", "Gymnasium", "LaTeX"
   ];
 
   // Double the lists for infinite scrolling loop
