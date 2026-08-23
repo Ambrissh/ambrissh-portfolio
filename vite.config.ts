@@ -16,7 +16,7 @@ export default defineConfig({
     ],
   },
   plugins: [
-    vinext(),
+    vinext({ prerender: true }),
     sites(),
     cloudflare({
       viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
