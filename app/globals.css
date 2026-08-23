@@ -1,13 +1,15 @@
+@import url('https://fonts.google.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 html {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   scroll-behavior: auto !important;
   color-scheme: dark;
 }
 
 body {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   background: black;
   color: white;
   overflow-x: hidden;
@@ -30,13 +32,22 @@ body {
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
-  --font-heading: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Space Grotesk", system-ui, sans-serif;
-  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-sans: 'Space Grotesk', sans-serif;
 }
 
 .font-display {
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 ::selection {

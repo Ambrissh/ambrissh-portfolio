@@ -1,15 +1,20 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { IntroSection } from "@/components/home/IntroSection";
-import { DoodleBackground } from "@/components/home/DoodleBackground";
-import { DeferredHomeSections } from "@/components/home/DeferredHomeSections";
+import { FeaturedProjectsSection } from "@/components/home/FeaturedProjectsSection";
+import { SkillsSection } from "@/components/home/SkillsSection";
+import { ExperienceSection } from "@/components/home/ExperienceSection";
+import { InitiativesSection } from "@/components/home/InitiativesSection";
 
 export default function Home() {
   return (
     <main className="relative" style={{ zIndex: 1 }}>
-      <DoodleBackground />
       <HeroSection />
       <IntroSection />
-      <DeferredHomeSections />
+      <FeaturedProjectsSection />
+      <SkillsSection />
+      <ExperienceSection />
+      <InitiativesSection />
     </main>
   );
 }
+
