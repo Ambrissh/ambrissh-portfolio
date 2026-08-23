@@ -7,7 +7,7 @@ export function HeroAmbient() {
       {/* Deep vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_50%,transparent_20%,#000_72%)]" />
 
-      {/* Key light — slow bloom behind quote */}
+      {/* Key light with a slow bloom behind the quote */}
       <div
         className="absolute left-1/2 top-[42%] h-[min(70vw,520px)] w-[min(90vw,720px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_38%,transparent_68%)] animate-ambient-pulse"
       />

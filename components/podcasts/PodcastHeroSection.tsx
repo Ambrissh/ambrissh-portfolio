@@ -13,7 +13,7 @@ export function PodcastHeroSection() {
       aria-label="Metaverse Entangled"
       className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-black px-6"
     >
-      {/* Static dot grid — no animation, no oversized element */}
+      {/* Static dot grid with no animation or oversized element */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.04]"

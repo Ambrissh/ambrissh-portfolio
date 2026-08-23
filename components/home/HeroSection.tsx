@@ -11,7 +11,7 @@ export function HeroSection() {
 
       {/* Centered Content with CSS-only popup animation */}
       <div className="animate-popup-fade-in relative z-10 mx-auto w-full max-w-6xl text-center flex flex-col items-center justify-center">
-        {/* Quote — matches "Metaverse Entangled" scale */}
+        {/* Quote matching the "Metaverse Entangled" scale */}
         <h1
           className="font-sans text-white"
           style={{

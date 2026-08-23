@@ -1,7 +1,7 @@
 const EXPERIENCE_ENTRIES = [
   {
-    title: "Research Collaborator — Energy-Efficient Drone Control using RL",
-    date: "March 2025 – May 2026",
+    title: "Research Collaborator: Energy-Efficient Drone Control using RL",
+    date: "March 2025 - May 2026",
     institution: "IIIT Hyderabad · Remote",
     advisor: "Advisor: Prof. Harikumar Kandath",
     bullets: [
@@ -11,7 +11,7 @@ const EXPERIENCE_ENTRIES = [
   },
   {
     title: "Research Intern",
-    date: "May 2025 – July 2025",
+    date: "May 2025 - July 2025",
     institution: "BITS Hyderabad · Hyderabad, India",
     bullets: [
       "Studied classical cryptography (RSA, AES) and quantum threats (Shor's, Grover's)",
@@ -19,8 +19,8 @@ const EXPERIENCE_ENTRIES = [
     ],
   },
   {
-    title: "Reading Project — Quantum Information & Computing",
-    date: "March 2025 – June 2025",
+    title: "Reading Project: Quantum Information & Computing",
+    date: "March 2025 - June 2025",
     institution: "IISER Berhampur · Remote",
     advisor: "Advisors: Prof. P.K. Panigrahi, Dr. Shreya Banerjee",
   },
@@ -84,7 +84,7 @@ export function ExperienceSection() {
                       key={bIndex}
                       className="font-sans text-[0.875rem] font-light leading-[1.7] text-white/60 mb-[0.4rem] last:mb-0"
                     >
-                      — {bullet}
+                      • {bullet}
                     </p>
                   ))}
                 </div>

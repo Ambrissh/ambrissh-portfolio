@@ -153,7 +153,7 @@ export function IntroSection() {
                 Fun Fact 🎖️
               </span>
               <h3 className="font-sans text-[0.9rem] font-semibold text-white mb-1.5 leading-tight">
-                NCC Best Cadet, RDC 2019–20
+                NCC Best Cadet, RDC 2019-20
               </h3>
               <p className="font-sans text-[0.8rem] font-light leading-[1.6] text-white/50">
                 Was part of the National Cadet Corps and represented my group as
