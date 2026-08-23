@@ -1,6 +1,4 @@
-@import url('https://fonts.google.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
-@import "lenis/dist/lenis.css";
 
 html {
   font-family: 'Space Grotesk', sans-serif;
@@ -39,15 +37,6 @@ body {
 
 .font-display {
   font-family: 'Space Grotesk', sans-serif;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
 }
 
 ::selection {

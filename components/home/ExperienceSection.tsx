@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect } from "react";
-
 const EXPERIENCE_ENTRIES = [
   {
     title: "Research Collaborator — Energy-Efficient Drone Control using RL",
@@ -31,33 +27,6 @@ const EXPERIENCE_ENTRIES = [
 ];
 
 export function ExperienceSection() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    const elements = document.querySelectorAll(".reveal-experience");
-    elements.forEach((el) => {
-      const htmlEl = el as HTMLElement;
-      htmlEl.style.opacity = "0";
-      htmlEl.style.transform = "translateY(20px)";
-      htmlEl.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-      observer.observe(htmlEl);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="experience"

@@ -1,35 +1,4 @@
-"use client";
-
-import { useEffect } from "react";
-
 export function IntroSection() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    const elements = document.querySelectorAll(".reveal-intro");
-    elements.forEach((el) => {
-      const htmlEl = el as HTMLElement;
-      htmlEl.style.opacity = "0";
-      htmlEl.style.transform = "translateY(20px)";
-      htmlEl.style.transition = "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
-      observer.observe(htmlEl);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="about"
@@ -147,13 +116,10 @@ export function IntroSection() {
           {/* Paragraphs */}
           <div className="space-y-5 font-sans font-light text-[0.95rem] leading-[1.8] text-white/70 mb-10">
             <p>
-              I&apos;m a fourth-year BS-MS Physics student at IISER Berhampur.
-              Technically a physics major, but more interested in Machine Learning , particularly in the area of Mechanistic Interpretability.
+              I&apos;m a fourth-year BS-MS Physics student at IISER Berhampur, focused on AI engineering and building reliable LLM systems.
             </p>
             <p>
-              Over the past I have worked around various areas like quantum communications , embedded systems , cybersecurity and ML modelling for
-              defence tech before finally making my jump into Mech Interp . I also enjoy building
-              things with AI both for mech interp and for my convenience . Some stuff I've made  are listed below !
+              I&apos;ve worked across quantum communications, embedded systems, cybersecurity, and ML modelling for defence tech. Now I build RAG pipelines, retrieval systems, evaluation workflows, and useful AI products.
             </p>
 
             <p>
@@ -162,7 +128,7 @@ export function IntroSection() {
               It started as curiosity ,still is. You can learn more by going to the "My Podcasts!" page .
             </p>
             <p>
-              If you are interested in Mech Interp or want to build something together or just say Hi —
+              If you&apos;re interested in AI engineering, RAG, or want to build something together,
               hit the contact page. I don&apos;t bite.
             </p>
           </div>
@@ -187,7 +153,7 @@ export function IntroSection() {
                 Fun Fact 🎖️
               </span>
               <h3 className="font-sans text-[0.9rem] font-semibold text-white mb-1.5 leading-tight">
-                NCC Best Cadet — RDC 2019–20
+                NCC Best Cadet, RDC 2019–20
               </h3>
               <p className="font-sans text-[0.8rem] font-light leading-[1.6] text-white/50">
                 Was part of the National Cadet Corps and represented my group as
@@ -199,7 +165,7 @@ export function IntroSection() {
           {/* Hobbies Row */}
           <div className="w-full">
             <span className="block font-sans text-[0.75rem] font-light text-white/35 mb-2">
-              When I&apos;m not building —
+              When I&apos;m not building:
             </span>
             <div className="flex flex-wrap gap-2">
               <span className="rounded-full border border-white/10 bg-white/[0.03] px-[0.75rem] py-[0.25rem] font-sans font-light text-[0.75rem] text-white/50">

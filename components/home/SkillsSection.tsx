@@ -1,48 +1,17 @@
-"use client";
-
-import { useEffect } from "react";
-
 export function SkillsSection() {
   const row1 = [
-    "Python", "C++", "JavaScript", "React", "Next.js", 
-    "PyTorch", "JAX", "Scikit-Learn", "CleanRL", "Gymnasium"
+    "Python", "TypeScript", "React", "Next.js", "PyTorch",
+    "LLM APIs", "RAG Pipelines", "Vector Search", "Evaluation", "Prompt Engineering"
   ];
   
   const row2 = [
-    "Stable Baselines3", "STM32", "MPU6050", "OpenOCD", 
-    "ARM Semihosting", "Git", "Linux", "Bash", "MATLAB", "LaTeX"
+    "PostgreSQL", "Docker", "Git", "Linux", "Bash", "C++",
+    "JAX", "Scikit-Learn", "Gymnasium", "LaTeX"
   ];
 
   // Double the lists for infinite scrolling loop
   const duplicatedRow1 = [...row1, ...row1];
   const duplicatedRow2 = [...row2, ...row2];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = document.querySelectorAll(".reveal-skills");
-    elements.forEach((el) => {
-      const htmlEl = el as HTMLElement;
-      htmlEl.style.opacity = "0";
-      htmlEl.style.transform = "translateY(15px)";
-      htmlEl.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out";
-      observer.observe(htmlEl);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section

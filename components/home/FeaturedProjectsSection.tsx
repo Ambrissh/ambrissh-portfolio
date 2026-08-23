@@ -1,37 +1,7 @@
-"use client";
-
-import { useEffect } from "react";
 import { ExternalLink, Globe2, Search, Sparkles } from "lucide-react";
 import { siteContent } from "@/lib/content";
 
 export function FeaturedProjectsSection() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = document.querySelectorAll(".reveal-project");
-    elements.forEach((el) => {
-      const htmlEl = el as HTMLElement;
-      htmlEl.style.opacity = "0";
-      htmlEl.style.transform = "translateY(15px)";
-      htmlEl.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out";
-      observer.observe(htmlEl);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="projects"

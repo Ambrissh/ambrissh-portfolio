@@ -5,11 +5,11 @@ export const siteContent = {
   tagline:
     "Physics Student • AI Builder • Podcast Host • Curious About the Future",
   bio: [
-    "I'm Ambrissh S. Raghav — stepping into my fourth year of BS-MS Physics at IISER Berhampur. Technically a physicist, but mostly found building things with AI.",
-    "AI is moving fast and honestly it's kind of insane to watch. My take? It's all about building well-architected solutions to real problems — not just vibing with the hype. I'm somewhere in the middle of figuring that out, one project at a time.",
-    "I've bounced around a bit — cryptography, embedded systems, cybersecurity — but the through line has always been the same: I like building things that actually do something.",
-    "I also host Metaverse Entangled, a podcast where I get to have conversations with founders, scientists, and researchers who are genuinely doing interesting things. It started as curiosity. Still is, honestly.",
-    "If you want to build something together, talk ideas, or just say hi — hit the contact page. I don't bite.",
+    "I'm Ambrissh S. Raghav, stepping into my fourth year of BS-MS Physics at IISER Berhampur. I focus on AI engineering and building reliable LLM systems.",
+    "I build RAG pipelines, retrieval systems, evaluation workflows, and useful AI products for real problems.",
+    "I've worked across cryptography, embedded systems, and cybersecurity. The through line has always been the same: I like building things that actually do something.",
+    "I also host Metaverse Entangled, a podcast where I have conversations with founders, scientists, and researchers who are genuinely doing interesting things. It started as curiosity. It still is.",
+    "If you want to build something together, talk ideas, or just say hi, visit the contact page. I don't bite.",
   ],
   projects: [
     {
@@ -55,7 +55,7 @@ export const siteContent = {
       "Metaverse Entangled began as an extension of my curiosity and love for meaningful conversations with people building ambitious things.",
       "I often made conscious efforts to connect with founders, scientists, and researchers working on frontier problems simply to understand how they think, build, and navigate challenges.",
       "Over time, we realized these conversations could benefit a much larger audience, which led to the idea of recording and sharing them.",
-      "Since then, our goal has remained the same — to ask unconventional, relevant, and thought-provoking questions that go beyond surface-level discussions and bring out authentic insights from the people shaping the future.",
+      "Since then, our goal has remained the same: to ask unconventional, relevant, and thought-provoking questions that go beyond surface-level discussions and bring out authentic insights from the people shaping the future.",
     ],
     featured: [
       {
