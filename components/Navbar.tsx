@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Navbar() {
   const navLinks = [
     { label: "Home", href: "/" },
@@ -11,13 +13,14 @@ export function Navbar() {
       <div className="flex items-center gap-6 md:gap-8 font-sans text-[0.85rem] font-medium text-white/60">
         {navLinks.map((link) => {
           return (
-            <a
+            <Link
               key={link.label}
               href={link.href}
+              prefetch
               className="transition-colors duration-200 hover:text-white"
             >
               {link.label}
-            </a>
+            </Link>
           );
         })}
       </div>

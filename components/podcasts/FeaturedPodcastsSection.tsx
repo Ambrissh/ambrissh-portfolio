@@ -1,42 +1,11 @@
-"use client";
-
-import {
-  motion,
-  useReducedMotion,
-} from "framer-motion";
 import { MoveUpRight, Play } from "lucide-react";
-import { useRef } from "react";
 import { siteContent } from "@/lib/content";
 import { PodcastVideoEmbed } from "./PodcastVideoEmbed";
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
-const grid = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.13,
-    },
-  },
-};
-
-const card = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease },
-  },
-};
-
 export function FeaturedPodcastsSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
-
   return (
     <section
       id="featured-podcasts"
-      ref={sectionRef}
       aria-label="Featured Podcasts"
       className="relative overflow-hidden bg-black px-6 py-24 sm:py-32 lg:py-40"
     >
@@ -50,46 +19,20 @@ export function FeaturedPodcastsSection() {
       />
 
       <div className="relative mx-auto max-w-6xl">
-        <motion.div
-          className="max-w-3xl"
-          initial={
-            prefersReducedMotion
-              ? undefined
-              : { opacity: 0, y: 16 }
-          }
-          whileInView={
-            prefersReducedMotion
-              ? undefined
-              : { opacity: 1, y: 0 }
-          }
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.7, ease }}
-        >
+        <div className="max-w-3xl">
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
             Featured conversations
           </p>
           <h2 className="mt-4 font-sans text-[clamp(2.45rem,6.8vw,5.6rem)] font-semibold leading-[0.96] tracking-[-0.055em] text-white">
             Featured Conversations
           </h2>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="mt-14 grid gap-5 lg:mt-16"
-          variants={prefersReducedMotion ? undefined : grid}
-          initial={prefersReducedMotion ? undefined : "hidden"}
-          whileInView={prefersReducedMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.05, margin: "-60px" }}
-        >
+        <div className="mt-14 grid gap-5 lg:mt-16">
           {siteContent.podcast.featured.map((episode, index) => (
-            <motion.article
+            <article
               key={episode.videoId}
               className="group grid overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#151515] lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)]"
-              variants={prefersReducedMotion ? undefined : card}
-              whileHover={
-                prefersReducedMotion
-                  ? undefined
-                  : { y: -5, transition: { duration: 0.35, ease } }
-              }
             >
               <div className="relative p-6 sm:p-7 lg:p-8">
                 <div
@@ -132,9 +75,9 @@ export function FeaturedPodcastsSection() {
                   videoId={episode.videoId}
                 />
               </div>
-            </motion.article>
+            </article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

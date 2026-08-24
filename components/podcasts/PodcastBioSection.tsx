@@ -1,32 +1,10 @@
-"use client";
-
-import {
-  motion,
-  useReducedMotion,
-} from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
 import { siteContent } from "@/lib/content";
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
-const reveal = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease },
-  },
-};
-
 export function PodcastBioSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
-
   return (
     <section
       id="story"
-      ref={sectionRef}
       aria-label="Podcast Bio"
       className="relative overflow-hidden bg-black px-6 py-24 sm:py-32 lg:py-40"
     >
@@ -39,21 +17,10 @@ export function PodcastBioSection() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_72%_48%_at_50%_42%,rgba(255,255,255,0.055),transparent_68%)]"
       />
 
-      <motion.div
+      <div
         className="relative mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[minmax(280px,0.72fr)_minmax(0,1fr)] md:gap-16 lg:gap-24"
-        initial={prefersReducedMotion ? undefined : "hidden"}
-        whileInView={prefersReducedMotion ? undefined : "visible"}
-        viewport={{ once: true, amount: 0.05, margin: "-50px" }}
-        variants={
-          prefersReducedMotion
-            ? undefined
-            : { hidden: {}, visible: { transition: { staggerChildren: 0.14 } } }
-        }
       >
-        <motion.div
-          className="relative"
-          variants={prefersReducedMotion ? undefined : reveal}
-        >
+        <div className="relative">
           <div
             aria-hidden
             className="absolute left-1/2 top-1/2 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08),transparent_64%)]"
@@ -66,17 +33,16 @@ export function PodcastBioSection() {
               className="object-contain p-8"
               sizes="(max-width: 768px) 82vw, 360px"
               priority
+              unoptimized
             />
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/[0.06]"
             />
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={prefersReducedMotion ? undefined : reveal}
-        >
+        <div>
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
             The conversation layer
           </p>
@@ -88,8 +54,8 @@ export function PodcastBioSection() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

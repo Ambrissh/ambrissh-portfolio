@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
@@ -223,8 +224,9 @@ export default function ContactPage() {
             </svg>
             <span>GitHub</span>
           </a>
-          <a
+          <Link
             href="/podcasts"
+            prefetch
             className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 font-sans font-normal text-[0.875rem] text-white/60 transition-all duration-200 hover:border-white/25 hover:text-white decoration-none"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -232,7 +234,7 @@ export default function ContactPage() {
               <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
             </svg>
             <span>Podcast</span>
-          </a>
+          </Link>
         </div>
       </section>
     </main>

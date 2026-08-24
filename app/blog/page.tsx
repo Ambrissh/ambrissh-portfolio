@@ -1,8 +1,3 @@
-"use client";
-
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
 const ARTICLE = {
   date: "May 25, 2026",
   author: "Ambrissh",
@@ -82,20 +77,6 @@ const PARAGRAPHS: { text: string; isQuote?: boolean }[] = [
 ];
 
 export default function BlogPage() {
-  const [expanded, setExpanded] = useState(false);
-  const articleRef = useRef<HTMLDivElement>(null);
-
-  const handleReadMore = () => {
-    setExpanded(true);
-
-    setTimeout(() => {
-      articleRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 200);
-  };
-
   return (
     <main className="relative min-h-screen bg-[#090909] text-white overflow-hidden">
       {/* subtle top line */}
@@ -111,12 +92,7 @@ export default function BlogPage() {
       <section className="relative px-6 pt-[9rem] pb-24 md:pt-[11rem]">
         <div className="mx-auto max-w-[46rem]">
           {/* meta */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center justify-center gap-3 text-[0.8rem] tracking-wide text-white/40 mb-8"
-          >
+          <div className="flex items-center justify-center gap-3 text-[0.8rem] tracking-wide text-white/40 mb-8">
             <time>{ARTICLE.date}</time>
 
             <span className="w-1 h-1 rounded-full bg-white/20" />
@@ -126,68 +102,31 @@ export default function BlogPage() {
             <span className="w-1 h-1 rounded-full bg-white/20" />
 
             <span>{ARTICLE.readTime}</span>
-          </motion.div>
+          </div>
 
           {/* title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-center text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.05] tracking-[-0.05em] text-white mb-12"
-          >
+          <h1 className="text-center text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.05] tracking-[-0.05em] text-white mb-12">
             {ARTICLE.title}
-          </motion.h1>
+          </h1>
 
           {/* divider */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.8 }}
-            className="mx-auto mb-12 h-px w-20 bg-white/15 origin-center"
-          />
+          <div className="mx-auto mb-12 h-px w-20 bg-white/15 origin-center" />
 
           {/* hook */}
-          <motion.blockquote
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center text-[1.05rem] md:text-[1.15rem] font-light italic leading-[1.9] text-white/55 px-4 md:px-10"
-          >
+          <blockquote className="text-center text-[1.05rem] md:text-[1.15rem] font-light italic leading-[1.9] text-white/55 px-4 md:px-10">
             {ARTICLE.hook}
-          </motion.blockquote>
+          </blockquote>
 
-          {/* read more */}
-          <AnimatePresence>
-            {!expanded && (
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex justify-center mt-14"
-              >
-                <button
-                  onClick={handleReadMore}
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-8 py-3 text-[0.85rem] tracking-wide text-white/65 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06] hover:text-white"
-                >
-                  Read More
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </section>
 
-      {/* ARTICLE */}
-      <AnimatePresence>
-        {expanded && (
-          <motion.article
-            ref={articleRef}
-            initial={{ opacity: 0, y: 35 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative px-6 pb-20"
-          >
+      <details className="group">
+        <summary className="mx-auto -mt-10 mb-24 flex w-fit cursor-pointer list-none rounded-full border border-white/10 bg-white/[0.03] px-8 py-3 text-[0.85rem] tracking-wide text-white/65 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06] hover:text-white group-open:hidden [&::-webkit-details-marker]:hidden">
+          Read More
+        </summary>
+
+        {/* ARTICLE */}
+        <article className="relative px-6 pb-20">
             {/* divider */}
             <div
               className="mx-auto mb-20 h-px max-w-[44rem]"
@@ -207,30 +146,22 @@ export default function BlogPage() {
               {PARAGRAPHS.map((para, i) => {
                 if (para.isQuote) {
                   return (
-                    <motion.blockquote
+                    <blockquote
                       key={i}
-                      initial={{ opacity: 0, x: -12 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
                       className="border-l border-white/15 pl-6 py-3 my-10 italic text-white/60 text-[1.05rem] leading-[1.9]"
                     >
                       {para.text}
-                    </motion.blockquote>
+                    </blockquote>
                   );
                 }
 
                 return (
-                  <motion.p
+                  <p
                     key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
                     className="text-[1rem] md:text-[1.05rem] font-light leading-[1.95] text-white/70 mb-8"
                   >
                     {para.text}
-                  </motion.p>
+                  </p>
                 );
               })}
 
@@ -244,9 +175,8 @@ export default function BlogPage() {
               {/* ending spacing */}
               <div className="h-28" />
             </div>
-          </motion.article>
-        )}
-      </AnimatePresence>
+        </article>
+      </details>
     </main>
   );
 }

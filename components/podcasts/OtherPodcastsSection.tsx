@@ -1,33 +1,8 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { MoveUpRight } from "lucide-react";
 import { siteContent } from "@/lib/content";
 import { PodcastVideoEmbed } from "./PodcastVideoEmbed";
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
-const grid = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease },
-  },
-};
-
 export function OtherPodcastsSection() {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
     <section
       id="more-podcasts"
@@ -44,46 +19,20 @@ export function OtherPodcastsSection() {
       />
 
       <div className="relative mx-auto max-w-6xl">
-        <motion.div
-          className="max-w-3xl"
-          initial={
-            prefersReducedMotion
-              ? undefined
-              : { opacity: 0, y: 16 }
-          }
-          whileInView={
-            prefersReducedMotion
-              ? undefined
-              : { opacity: 1, y: 0 }
-          }
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.7, ease }}
-        >
+        <div className="max-w-3xl">
           <p className="font-sans text-[0.68rem] font-medium uppercase leading-relaxed tracking-[0.3em] text-white/35 sm:text-[0.75rem]">
             More episodes
           </p>
           <h2 className="mt-4 font-sans text-[clamp(2.35rem,6.4vw,5.3rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-white">
             Keep listening...
           </h2>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="mt-14 grid gap-5 md:grid-cols-2 lg:mt-16"
-          variants={prefersReducedMotion ? undefined : grid}
-          initial={prefersReducedMotion ? undefined : "hidden"}
-          whileInView={prefersReducedMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.05, margin: "-60px" }}
-        >
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:mt-16">
           {siteContent.podcast.other.map((episode, index) => (
-            <motion.article
+            <article
               key={episode.videoId}
               className="group overflow-hidden rounded-[8px] border border-white/[0.09] bg-[#0d0d0d] p-3 transition-colors duration-500 hover:border-white/[0.18] hover:bg-[#151515]"
-              variants={prefersReducedMotion ? undefined : item}
-              whileHover={
-                prefersReducedMotion
-                  ? undefined
-                  : { y: -4, transition: { duration: 0.35, ease } }
-              }
             >
               <PodcastVideoEmbed title={episode.title} videoId={episode.videoId} />
               <div className="flex items-center justify-between gap-4 px-3 py-4">
@@ -104,9 +53,9 @@ export function OtherPodcastsSection() {
                   />
                 </a>
               </div>
-            </motion.article>
+            </article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
