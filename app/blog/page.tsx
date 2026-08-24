@@ -6,8 +6,6 @@ const ARTICLE = {
   hook: `Why are some of the most influential minds in AI, despite holding PhDs from top institutions, almost never publicly addressed as 'Dr.' anymore? Has startup culture quietly replaced academic prestige with product impact, execution, and public influence?`,
 };
 
-export const revalidate = 31536000;
-
 const PARAGRAPHS: { text: string; isQuote?: boolean }[] = [
   {
     text: `Finally, after mustering the courage and pulling everything together, I have decided to write my first blog post! I've always wanted to express my thoughts and strongly believe in the power of outreach. This is one of the main reasons I started my podcast series, Metaverse Entangled (do check it out if you're curious on YouTube!). I believe writing genuine, non-AI-generated content (though I do sometimes inspect AI-generated content) can leave a lasting impact :)!`,

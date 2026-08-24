@@ -5,8 +5,6 @@ import { SkillsSection } from "@/components/home/SkillsSection";
 import { ExperienceSection } from "@/components/home/ExperienceSection";
 import { InitiativesSection } from "@/components/home/InitiativesSection";
 
-export const revalidate = 31536000;
-
 export default function Home() {
   return (
     <main className="relative" style={{ zIndex: 1 }}>

@@ -5,8 +5,6 @@ import { OtherPodcastsSection } from "@/components/podcasts/OtherPodcastsSection
 import { PodcastBioSection } from "@/components/podcasts/PodcastBioSection";
 import { PodcastHeroSection } from "@/components/podcasts/PodcastHeroSection";
 
-export const revalidate = 31536000;
-
 export const metadata: Metadata = {
   title: "My Podcasts | Ambrissh S. Raghav",
   description:
