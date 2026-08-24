@@ -5,6 +5,8 @@ import { useState } from "react";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
+export const revalidate = 31536000;
+
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
