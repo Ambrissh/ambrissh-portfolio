@@ -5,7 +5,7 @@ export function FeaturedProjectsSection() {
   return (
     <section
       id="projects"
-      className="px-6 py-20"
+      className="defer-offscreen px-6 py-20"
       style={{ background: "rgba(0,0,0,0.72)" }}
     >
       <div className="mx-auto w-full max-w-[72rem] grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16 items-start">

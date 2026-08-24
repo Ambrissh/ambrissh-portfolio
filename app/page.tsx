@@ -14,6 +14,7 @@ export default function Home() {
       <SkillsSection />
       <ExperienceSection />
       <InitiativesSection />
+      <script src="/static-runtime.js" defer data-static-runtime />
     </main>
   );
 }

@@ -30,7 +30,7 @@ export function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="px-6 py-20"
+      className="defer-offscreen px-6 py-20"
       style={{ background: "rgba(0,0,0,0.90)" }}
     >
       <div className="mx-auto max-w-[56rem]">

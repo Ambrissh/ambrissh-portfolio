@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { siteContent } from "@/lib/content";
 
 export function PodcastBioSection() {
@@ -6,7 +5,7 @@ export function PodcastBioSection() {
     <section
       id="story"
       aria-label="Podcast Bio"
-      className="relative overflow-hidden bg-black px-6 py-24 sm:py-32 lg:py-40"
+      className="defer-offscreen relative overflow-hidden bg-black px-6 py-24 sm:py-32 lg:py-40"
     >
       <div
         aria-hidden
@@ -26,14 +25,15 @@ export function PodcastBioSection() {
             className="absolute left-1/2 top-1/2 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08),transparent_64%)]"
           />
           <div className="relative mx-auto aspect-square w-full max-w-[360px] overflow-hidden rounded-[8px] border border-white/[0.08] bg-[#0d0d0d] p-6 md:mx-0">
-            <Image
+            <img
               src={siteContent.podcast.logo}
               alt={`${siteContent.podcast.name} logo`}
-              fill
-              className="object-contain p-8"
-              sizes="(max-width: 768px) 82vw, 360px"
-              priority
-              unoptimized
+              width={360}
+              height={360}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-contain p-8"
             />
             <div
               aria-hidden

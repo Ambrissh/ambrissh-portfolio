@@ -7,7 +7,7 @@ export function OtherPodcastsSection() {
     <section
       id="more-podcasts"
       aria-label="Other Podcasts"
-      className="relative overflow-hidden bg-black px-6 py-24 sm:py-32 lg:py-40"
+      className="defer-offscreen relative overflow-hidden bg-black px-6 py-24 sm:py-32 lg:py-40"
     >
       <div
         aria-hidden

@@ -1,59 +1,4 @@
-"use client";
-
-import { useState } from "react";
-
-type FormStatus = "idle" | "sending" | "success" | "error";
-
 export default function ContactPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [obsessedProblem, setObsessedProblem] = useState("");
-  const [currentlyBuilding, setCurrentlyBuilding] = useState("");
-  const [unlimitedCreation, setUnlimitedCreation] = useState("");
-  const [generalThought, setGeneralThought] = useState("");
-
-  const [status, setStatus] = useState<FormStatus>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const handleSend = async () => {
-    if (!name || !email) {
-      setErrorMessage("Name and Email are required fields.");
-      setStatus("error");
-      return;
-    }
-
-    setStatus("sending");
-    setErrorMessage("");
-
-    try {
-      const response = await fetch("https://formspree.io/f/mnjrnewv", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          "What problem are you obsessed with solving?": obsessedProblem,
-          "What are you currently building or exploring?": currentlyBuilding,
-          "If resources weren't a limitation, what would you create?": unlimitedCreation,
-          "Leave a thought, idea, or question you genuinely care about.": generalThought,
-        }),
-      });
-
-      if (response.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-        setErrorMessage("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      setStatus("error");
-      setErrorMessage("Something went wrong. Please try again.");
-    }
-  };
-
   return (
     <main className="relative min-h-screen bg-black px-6 pt-[7rem] pb-[6rem] text-white overflow-hidden">
       {/* Ambient Orbs */}
@@ -85,8 +30,12 @@ export default function ContactPage() {
         </p>
 
         {/* Form Card */}
-        {status !== "success" ? (
-          <div className="relative rounded-[1.5rem] border border-white/[0.09] bg-white/[0.04] p-10 flex flex-col">
+        <form
+          action="https://formspree.io/f/mnjrnewv"
+          method="POST"
+          data-contact-form
+          className="relative rounded-[1.5rem] border border-white/[0.09] bg-white/[0.04] p-10 flex flex-col"
+        >
             {/* Shimmer line */}
             <div 
               className="absolute top-0 left-6 right-6 h-px" 
@@ -100,8 +49,9 @@ export default function ContactPage() {
               </label>
               <input
                 type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                name="name"
+                autoComplete="name"
+                required
                 placeholder="Your name"
                 className="w-full rounded-[0.75rem] border border-white/10 bg-white/[0.04] px-4 py-3.5 text-white font-sans font-light text-[0.95rem] outline-none transition-colors duration-200 focus:border-white/30 placeholder:text-white/25"
               />
@@ -114,8 +64,9 @@ export default function ContactPage() {
               </label>
               <input
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                autoComplete="email"
+                required
                 placeholder="your@email.com"
                 className="w-full rounded-[0.75rem] border border-white/10 bg-white/[0.04] px-4 py-3.5 text-white font-sans font-light text-[0.95rem] outline-none transition-colors duration-200 focus:border-white/30 placeholder:text-white/25"
               />
@@ -127,8 +78,7 @@ export default function ContactPage() {
                 What problem are you obsessed with solving?
               </label>
               <textarea
-                value={obsessedProblem}
-                onChange={(e) => setObsessedProblem(e.target.value)}
+                name="What problem are you obsessed with solving?"
                 rows={3}
                 placeholder="The thing you can't stop thinking about"
                 className="w-full rounded-[0.75rem] border border-white/10 bg-white/[0.04] px-4 py-3.5 text-white font-sans font-light text-[0.95rem] outline-none transition-colors duration-200 focus:border-white/30 placeholder:text-white/25 resize-none"
@@ -141,8 +91,7 @@ export default function ContactPage() {
                 What are you currently building or exploring?
               </label>
               <textarea
-                value={currentlyBuilding}
-                onChange={(e) => setCurrentlyBuilding(e.target.value)}
+                name="What are you currently building or exploring?"
                 rows={3}
                 placeholder="Project, research, idea..."
                 className="w-full rounded-[0.75rem] border border-white/10 bg-white/[0.04] px-4 py-3.5 text-white font-sans font-light text-[0.95rem] outline-none transition-colors duration-200 focus:border-white/30 placeholder:text-white/25 resize-none"
@@ -155,8 +104,7 @@ export default function ContactPage() {
                 If resources weren't a limitation, what would you create?
               </label>
               <textarea
-                value={unlimitedCreation}
-                onChange={(e) => setUnlimitedCreation(e.target.value)}
+                name="If resources weren't a limitation, what would you create?"
                 rows={3}
                 placeholder="Go big."
                 className="w-full rounded-[0.75rem] border border-white/10 bg-white/[0.04] px-4 py-3.5 text-white font-sans font-light text-[0.95rem] outline-none transition-colors duration-200 focus:border-white/30 placeholder:text-white/25 resize-none"
@@ -169,37 +117,41 @@ export default function ContactPage() {
                 Leave a thought, idea, or question you genuinely care about.
               </label>
               <textarea
-                value={generalThought}
-                onChange={(e) => setGeneralThought(e.target.value)}
+                name="Leave a thought, idea, or question you genuinely care about."
                 rows={4}
                 placeholder="Anything on your mind."
                 className="w-full rounded-[0.75rem] border border-white/10 bg-white/[0.04] px-4 py-3.5 text-white font-sans font-light text-[0.95rem] outline-none transition-colors duration-200 focus:border-white/30 placeholder:text-white/25 resize-none"
               />
             </div>
 
-            {/* Error Message */}
-            {errorMessage && (
-              <p className="text-red-400 font-sans text-sm mb-4">
-                {errorMessage}
-              </p>
-            )}
+            <p
+              data-contact-error
+              role="alert"
+              hidden
+              className="text-red-400 font-sans text-sm mb-4"
+            >
+              Something went wrong. Please try again.
+            </p>
 
             {/* Submit Button */}
             <button
-              onClick={handleSend}
-              disabled={status === "sending"}
+              type="submit"
+              data-contact-submit
               className="w-full rounded-[0.75rem] border border-white/15 bg-white/6 py-3.5 font-sans font-medium text-[0.95rem] text-white flex items-center justify-center gap-2 transition-colors duration-200 hover:bg-white/10 cursor-pointer disabled:opacity-50"
             >
-              <span>{status === "sending" ? "Sending..." : "Send Thoughts"}</span>
+              <span data-contact-submit-label>Send Thoughts</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                 <line x1="7" y1="17" x2="17" y2="7" />
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </button>
-          </div>
-        ) : (
-          /* Success Screen */
-          <div className="rounded-[1.5rem] border border-white/[0.09] bg-white/[0.04] p-12 py-20 flex flex-col items-center justify-center text-center">
+        </form>
+
+          <div
+            data-contact-success
+            hidden
+            className="rounded-[1.5rem] border border-white/[0.09] bg-white/[0.04] p-12 py-20 flex flex-col items-center justify-center text-center"
+          >
             <h3 className="font-sans font-semibold text-[1.1rem] text-white leading-tight">
               Sent. I'll get back to you.
             </h3>
@@ -207,7 +159,6 @@ export default function ContactPage() {
               Good conversation incoming.
             </p>
           </div>
-        )}
 
         {/* Social Pills */}
         <div className="flex flex-wrap gap-4 justify-center mt-8">
@@ -235,6 +186,7 @@ export default function ContactPage() {
           </a>
         </div>
       </section>
+      <script src="/static-runtime.js" defer data-static-runtime />
     </main>
   );
 }

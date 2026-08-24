@@ -18,6 +18,7 @@ export default function PodcastsPage() {
       <PodcastBioSection />
       <FeaturedPodcastsSection />
       <OtherPodcastsSection />
+      <script src="/static-runtime.js" defer data-static-runtime />
     </main>
   );
 }

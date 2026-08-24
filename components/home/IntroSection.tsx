@@ -2,14 +2,14 @@ export function IntroSection() {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center px-6 py-20"
+      className="defer-offscreen min-h-screen flex items-center justify-center px-6 py-20"
       style={{ background: "rgba(0,0,0,0.72)" }}
     >
       <div className="mx-auto w-full max-w-[72rem] grid gap-12 md:grid-cols-2 md:gap-16 items-start">
         {/* Left Column: Large TEDx Image */}
         <div className="reveal-intro flex justify-center md:justify-start w-full">
           <img
-            src="/assets/ambrisshtedx.png"
+            data-lazy-src="/assets/ambrisshtedx.png"
             alt="Ambrissh S. Raghav"
             className="w-full max-w-[85vw] md:max-w-[42vw] md:w-[420px] h-auto rounded-[1.5rem] object-cover border border-white/10"
             loading="lazy"
@@ -18,6 +18,16 @@ export function IntroSection() {
             height={525}
             style={{ aspectRatio: "4/5" }}
           />
+          <noscript>
+            <img
+              src="/assets/ambrisshtedx.png"
+              alt="Ambrissh S. Raghav"
+              className="w-full max-w-[85vw] md:max-w-[42vw] md:w-[420px] h-auto rounded-[1.5rem] object-cover border border-white/10"
+              width={420}
+              height={525}
+              style={{ aspectRatio: "4/5" }}
+            />
+          </noscript>
         </div>
 
         {/* Right Column: Bio, Fun Fact, Hobbies */}

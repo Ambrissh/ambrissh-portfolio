@@ -16,7 +16,7 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      className="px-6 py-20 overflow-hidden"
+      className="defer-offscreen px-6 py-20 overflow-hidden"
       style={{ background: "rgba(0,0,0,0.90)" }}
     >
       <div className="mx-auto max-w-[56rem]">

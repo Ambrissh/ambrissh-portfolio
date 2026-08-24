@@ -9,8 +9,8 @@ export function HeroSection() {
     >
       <HeroCinematicBackground />
 
-      {/* Centered Content with CSS-only popup animation */}
-      <div className="animate-popup-fade-in relative z-10 mx-auto w-full max-w-6xl text-center flex flex-col items-center justify-center">
+      {/* Centered Content */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl text-center flex flex-col items-center justify-center">
         {/* Quote matching the "Metaverse Entangled" scale */}
         <h1
           className="font-sans text-white"
@@ -29,7 +29,7 @@ export function HeroSection() {
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-white/20 animate-fade-in"
+        className="absolute bottom-10 z-10 flex flex-col items-center gap-2 text-white/20"
         aria-hidden
       >
         <span className="text-[9px] font-semibold uppercase tracking-[0.3em]">
