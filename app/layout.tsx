@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import "./globals.css";
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -24,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} relative h-full`}>
-      <body className={`${spaceGrotesk.variable} antialiased`}>
+    <html lang="en" className="relative h-full">
+      <body className="antialiased">
         <Navbar />
         {children}
       </body>

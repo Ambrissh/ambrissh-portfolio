@@ -9,11 +9,13 @@ export default function Home() {
   return (
     <main className="relative" style={{ zIndex: 1 }}>
       <HeroSection />
-      <IntroSection />
-      <FeaturedProjectsSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <InitiativesSection />
+      <template id="deferred-home-content">
+        <IntroSection />
+        <FeaturedProjectsSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <InitiativesSection />
+      </template>
       <script src="/static-runtime.js" defer data-static-runtime />
     </main>
   );
