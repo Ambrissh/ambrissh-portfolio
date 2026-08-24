@@ -1,11 +1,9 @@
-import Link from "next/link";
-
 export function Navbar() {
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "My Podcasts!", href: "/podcasts" },
-    { label: "Blog", href: "/blog" },
-    { label: "Let's Chat", href: "/contact" },
+    { label: "My Podcasts!", href: "/podcasts/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "Let's Chat", href: "/contact/" },
   ];
 
   return (
@@ -13,14 +11,13 @@ export function Navbar() {
       <div className="flex items-center gap-6 md:gap-8 font-sans text-[0.85rem] font-medium text-white/60">
         {navLinks.map((link) => {
           return (
-            <Link
+            <a
               key={link.label}
               href={link.href}
-              prefetch
               className="transition-colors duration-200 hover:text-white"
             >
               {link.label}
-            </Link>
+            </a>
           );
         })}
       </div>
