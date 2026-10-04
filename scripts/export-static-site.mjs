@@ -1,4 +1,4 @@
-import { cp, mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
@@ -10,27 +10,42 @@ if (!outputArgument) {
 }
 
 const outputDirectory = path.resolve(outputArgument);
+const siteOutputDirectory = path.join(projectRoot, "out");
 const clientDirectory = path.join(projectRoot, "dist", "client");
-const routesDirectory = path.join(projectRoot, "dist", "server", "prerendered-routes");
+const routesDirectory = clientDirectory;
+const isSiteOutput = outputDirectory === siteOutputDirectory;
 
 if (
   outputDirectory === path.parse(outputDirectory).root ||
   outputDirectory === projectRoot ||
-  outputDirectory.startsWith(`${projectRoot}${path.sep}`)
+  (outputDirectory.startsWith(`${projectRoot}${path.sep}`) &&
+    outputDirectory !== siteOutputDirectory)
 ) {
-  throw new Error("The static export must use a new directory outside the project.");
+  throw new Error("The static export must use a new directory outside the project or out/.");
 }
 
-try {
-  await stat(outputDirectory);
-  throw new Error(`Output directory already exists: ${outputDirectory}`);
-} catch (error) {
-  if (error.code !== "ENOENT") throw error;
+if (isSiteOutput) {
+  // Vinext writes the latest prerendered pages into dist/client on every build.
+  const rawIndex = await readFile(path.join(clientDirectory, "index.html"), "utf8");
+  if (!rawIndex.includes("/_next/static/chunks/")) {
+    throw new Error("dist/client is not a raw Vinext export; run the build first.");
+  }
+} else {
+  try {
+    await stat(outputDirectory);
+    throw new Error(`Output directory already exists: ${outputDirectory}`);
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
 }
 
-await mkdir(outputDirectory, { recursive: true });
+const stagingDirectory = isSiteOutput
+  ? await mkdtemp(path.join(projectRoot, ".portfolio-static-"))
+  : outputDirectory;
 
-await cp(clientDirectory, outputDirectory, {
+await mkdir(stagingDirectory, { recursive: true });
+
+await cp(clientDirectory, stagingDirectory, {
   recursive: true,
   filter(source) {
     const relative = path.relative(clientDirectory, source);
@@ -95,11 +110,16 @@ function removeReactRuntime(source) {
 
 for (const [sourceName, outputName] of routes) {
   const sourcePath = path.join(routesDirectory, sourceName);
-  const outputPath = path.join(outputDirectory, outputName);
+  const outputPath = path.join(stagingDirectory, outputName);
   const html = removeReactRuntime(await readFile(sourcePath, "utf8"));
 
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, html);
+}
+
+if (isSiteOutput) {
+  await rm(siteOutputDirectory, { recursive: true, force: true });
+  await rename(stagingDirectory, siteOutputDirectory);
 }
 
 console.log(`Static site exported to ${outputDirectory}`);
